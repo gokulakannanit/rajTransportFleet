@@ -1,0 +1,20 @@
+<div class="ng-hide" ng-show="modalInitiated">
+  <div class="modal-backdrop fade in" ng-show="ftModal.show"></div>
+  <div class="modal animated delay-250" ng-class="{'bounceOutUp':!ftModal.show,  'bounceInDown':ftModal.show}" tabindex="-1" role="dialog" style="display:block;" ng-click="close(0)">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-body">
+          <div class="row text-{{ftModal.button}}" align="center"><i class="fa fa-5x fa-times-circle-o"></i></div>
+          <div class="row" align="center">
+              <h2>{{ftModal.heading}}</h2>       
+              <p>{{ftModal.message}}</p>
+          </div>
+        </div>
+        <div class="modal-footer" align="center">        
+          <button type="button" class="btn btn-{{ftModal.button}}" ng-click="close(1)">{{ftModal.action | titleCase}}</button>
+          <button type="button" class="btn btn-default" ng-click="close(0)">Cancel</button>
+        </div>
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div>
+</div>
