@@ -4,6 +4,7 @@ angular.module('mainModule')
 		$scope.ownerList = data;
 	}	
 	function init(){
+		$scope.ownerList = [];
 		updateService.get('all').then(updateList);
 	}
 

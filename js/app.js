@@ -16,8 +16,13 @@ myAppDev.config(function($stateProvider, $urlRouterProvider) {
         templateUrl: 'modules/company/subModule/add',
         controller:  'company.addController'
     })
-    .state('ownerInfo', {
-        url: '/ownerInfo/:isEdit/:editId',
+    .state('owner', {
+        url: '/owner',
+        templateUrl: 'modules/owner',
+        controller:  'owner.mainController'
+    })
+    .state('ownerDetail', {
+        url: '/ownerDetail/:isEdit/:editId',
         templateUrl: 'modules/owner/subModule/add',
         controller:  'owner.addController'
     })

@@ -34,6 +34,7 @@ angular.module('mainModule').controller('owner.addController', ['$rootScope', '$
     	$scope.ownerForm.$setPristine()
     }
 
+
     init();
 
 }]);
