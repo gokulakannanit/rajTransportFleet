@@ -1,18 +1,18 @@
-angular.module('mainModule').controller('owner.addController', ['$rootScope', '$scope', '$stateParams', 'owner.updateService' , function($rootScope, $scope, $stateParams, updateService){
+angular.module('mainModule').controller('client.addController', ['$rootScope', '$scope', '$stateParams', 'client.updateService' , function($rootScope, $scope, $stateParams, updateService){
 	// get the id
 
-    $rootScope.activeMenu="owner";
+    $rootScope.activeMenu="client";
 
     $scope.isEdit = $stateParams.isEdit;
    	
    	function init(){
    		 $scope.model = {
-				name:'',
-                phone:'',
+				companyName:'',
 				address:'',
-				owners:'',
+				contactPerson:'',
 				email:'',
-				pan:'',
+				phone:'',
+				
 		   };
    	}
 
@@ -27,7 +27,7 @@ angular.module('mainModule').controller('owner.addController', ['$rootScope', '$
 
     $scope.reset = function(){
     	init();
-    	$scope.ownerForm.$setPristine()
+    	$scope.clientForm.$setPristine()
     }
 
 

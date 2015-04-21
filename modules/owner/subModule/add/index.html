@@ -15,19 +15,7 @@
                 <div class="row no-gutter">
                     <form class="form-horizontal" role="form" name="ownerForm">
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                            <div class="form-group">
-                                <label class="col-sm-3 control-label" for="textinput">Type Of owner</label>
-                                <div class="col-sm-9">                              
-                                    <div class="radio">
-                                        <label>
-                                            <input type="radio" value="S" ng-model="model.typeOfowner">Sole Propriteship
-                                        </label>
-                                        <label>
-                                            <input type="radio" value="P" ng-model="model.typeOfowner">Partnership
-                                        </label>
-                                    </div>
-                                </div>
-                            </div>
+                            
                             <div class="form-group" ng-class="{ 'has-error' : ownerForm.ownerName.$invalid && !ownerForm.ownerName.$pristine }">
                                 <label class="col-sm-3 control-label">owner Name</label>
                                 <div class="col-sm-9">                              
@@ -36,39 +24,18 @@
                                 </div>
                             </div>                    
                             <div class="form-group" ng-class="{ 'has-error' : ownerForm.address.$invalid && !ownerForm.address.$pristine }">
-                                <label class="col-sm-3 control-label">Registered Address</label>
+                                <label class="col-sm-3 control-label">Address</label>
                                 <div class="col-sm-9">                              
-                                    <input type="text" class="form-control" name="address" placeholder="Full Restered Address of the owner" ng-model="model.address" required>
+                                    <input type="text" class="form-control" name="address" placeholder="Full Address of the owner" ng-model="model.address" required>
                                     <p ng-show="ownerForm.address.$invalid && !ownerForm.address.$pristine" class="help-block">owner address is required.</p>
                                 </div>
                             </div>
-                            <div class="form-group" ng-class="{ 'has-error' : ownerForm.owners.$invalid && !ownerForm.owners.$pristine }">
-                                <label class="col-sm-3 control-label"><span ng-if="model.typeOfowner === 'P'">Add Partners</span><span ng-if="model.typeOfowner === 'S'">Propriteship</span></label>
-                                <div class="col-sm-9">
-                                    <div auto-complete url="/search" model="data.tags" ng-if="model.typeOfowner === 'P'"></div>
-                                    <select class="form-control" name="owners" ng-if="model.typeOfowner === 'S'" ng-model="owners" required>
-                                        <option value="">-- Select Owner --</option>
-                                        <option value="Raj">RAJ</option>
-                                        <option value="Vignesh">VIGNESH</option>
-                                    </select>
-                                    <p ng-show="ownerForm.owners.$invalid && !ownerForm.owners.$pristine" class="help-block">Owner Data is required.</p>
-                                </div>
-                            </div>
+                            
                             <div class="form-group" ng-class="{ 'has-error' : ownerForm.email.$invalid && !ownerForm.email.$pristine }">
                                 <label class="col-sm-3 control-label">Email Id</label>
                                 <div class="col-sm-9">
                                   <input type="email " placeholder="Enter owner email" class="form-control" name="email" ng-model="model.email">
                                   <p ng-show="ownerForm.email.$invalid && !ownerForm.email.$pristine" class="help-block">Enter valid email id</p>
-                                </div>
-                            </div>
-                        
-                        </div>
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                            <div class="form-group">
-                                <label class="col-sm-3 control-label">SSI NO</label>
-                                <div class="col-sm-9">
-                                  <input type="text" name="ssiNo" placeholder="Enter SSI Certificate No" class="form-control" ng-model="model.ssiNo">
-                                  <p ng-show="ownerForm.ssi.$invalid && !ownerForm.ssi.$pristine" class="help-block">Enter valid SSI NO</p>
                                 </div>
                             </div>
                             <div class="form-group" ng-class="{ 'has-error' : ownerForm.panNumber.$invalid && !ownerForm.panNumber.$pristine }">
@@ -77,21 +44,7 @@
                                   <input type="text" name="panNumber" placeholder="Enter owner PAN Number" class="form-control" ng-model="model.panNumber" ng-minlength="10" ng-maxlength="10" ng-pattern="/[A-Za-z]{5}\d{4}[A-Za-z]{1}/">
                                   <p ng-show="ownerForm.panNumber.$invalid && !ownerForm.panNumber.$pristine" class="help-block">Enter valid PAN Number</p>
                                 </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="col-sm-3 control-label">TAN NO</label>
-                                <div class="col-sm-9">
-                                  <input type="text" name="tanNo" placeholder="Enter owner TAN Number" class="form-control" ng-model="model.tanNo">
-                                  <p ng-show="ownerForm.tanNo.$invalid && !ownerForm.tanNo.$pristine" class="help-block">Enter valid TAN Number</p>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="col-sm-3 control-label">Service Tax</label>
-                                <div class="col-sm-9">
-                                  <input type="text" name="serviceTaxNumber" placeholder="Enter owner service tax" class="form-control" ng-model="model.serviceTaxNumber">
-                                  <p ng-show="ownerForm.serviceTaxNumber.$invalid && !ownerForm.serviceTaxNumber.$pristine" class="help-block">Enter valid TAN Number</p>
-                                </div>
-                            </div>
+                            </div>                            
                             <div class="form-group" ng-class="{ 'has-error' : ownerForm.phone.$invalid && !ownerForm.phone.$pristine }">
                                 <label class="col-sm-3 control-label">Phone Number</label>
                                 <div class="col-sm-9">
@@ -99,7 +52,7 @@
                                   <p ng-show="ownerForm.phone.$invalid && !ownerForm.phone.$pristine" class="help-block">Enter valid Phonenumber</p>
                                 </div>
                             </div>
-                        </div>
+                        
 
                         <div class="col-md-12 col-sm-12 col-xs-12 form-button">
                             <div class="form-group" align="center">
