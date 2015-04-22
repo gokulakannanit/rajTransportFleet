@@ -8,12 +8,12 @@ angular.module('mainModule').controller('company.addController', ['$rootScope', 
    	function init(){
    		 $scope.model = {
 				companyName:'',
-				ssiNo:'',
-                tanNo:'',
-                serviceTaxNumber:'',
+				ssi:'',
+                tan:'',
+                serviceTax:'',
 				pan:'',
 				address:'',
-				owners:'',
+				owner:'',
 				email:'',
 				phone:'',
 				typeOfCompany:'S'

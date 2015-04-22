@@ -38,11 +38,11 @@
                                   <p ng-show="ownerForm.email.$invalid && !ownerForm.email.$pristine" class="help-block">Enter valid email id</p>
                                 </div>
                             </div>
-                            <div class="form-group" ng-class="{ 'has-error' : ownerForm.panNumber.$invalid && !ownerForm.panNumber.$pristine }">
+                            <div class="form-group" ng-class="{ 'has-error' : ownerForm.pan.$invalid && !ownerForm.pan.$pristine }">
                                 <label class="col-sm-3 control-label">PAN NO</label>
                                 <div class="col-sm-9">
-                                  <input type="text" name="panNumber" placeholder="Enter owner PAN Number" class="form-control" ng-model="model.pan" ng-minlength="10" ng-maxlength="10" ng-pattern="/[A-Za-z]{5}\d{4}[A-Za-z]{1}/">
-                                  <p ng-show="ownerForm.panNumber.$invalid && !ownerForm.panNumber.$pristine" class="help-block">Enter valid PAN Number</p>
+                                  <input type="text" name="pan" placeholder="Enter owner PAN Number" class="form-control" ng-model="model.pan" ng-minlength="10" ng-maxlength="10" ng-pattern="/[A-Za-z]{5}\d{4}[A-Za-z]{1}/">
+                                  <p ng-show="ownerForm.pan.$invalid && !ownerForm.pan.$pristine" class="help-block">Enter valid PAN Number</p>
                                 </div>
                             </div>                            
                             <div class="form-group" ng-class="{ 'has-error' : ownerForm.phone.$invalid && !ownerForm.phone.$pristine }">

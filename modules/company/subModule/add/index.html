@@ -42,16 +42,16 @@
                                     <p ng-show="companyForm.address.$invalid && !companyForm.address.$pristine" class="help-block">Company address is required.</p>
                                 </div>
                             </div>
-                            <div class="form-group" ng-class="{ 'has-error' : companyForm.owners.$invalid && !companyForm.owners.$pristine }">
+                            <div class="form-group" ng-class="{ 'has-error' : companyForm.owner.$invalid && !companyForm.owner.$pristine }">
                                 <label class="col-sm-3 control-label"><span ng-if="model.typeOfCompany === 'P'">Add Partners</span><span ng-if="model.typeOfCompany === 'S'">Propriteship</span></label>
                                 <div class="col-sm-9">
                                     <div auto-complete url="/search" model="data.tags" ng-if="model.typeOfCompany === 'P'"></div>
-                                    <select class="form-control" name="owners" ng-if="model.typeOfCompany === 'S'" ng-model="model.owners" required>
+                                    <select class="form-control" name="owner" ng-if="model.typeOfCompany === 'S'" ng-model="model.owner" >
                                         <option value="">-- Select Owner --</option>
                                         <option value="Raj">RAJ</option>
                                         <option value="Vignesh">VIGNESH</option>
                                     </select>
-                                    <p ng-show="companyForm.owners.$invalid && !companyForm.owners.$pristine" class="help-block">Owner Data is required.</p>
+                                    <p ng-show="companyForm.owner.$invalid && !companyForm.owner.$pristine" class="help-block">Owner Data is required.</p>
                                 </div>
                             </div>
                             <div class="form-group" ng-class="{ 'has-error' : companyForm.email.$invalid && !companyForm.email.$pristine }">
@@ -67,7 +67,7 @@
                             <div class="form-group">
                                 <label class="col-sm-3 control-label">SSI NO</label>
                                 <div class="col-sm-9">
-                                  <input type="text" name="ssiNo" placeholder="Enter SSI Certificate No" class="form-control" ng-model="model.ssiNo">
+                                  <input type="text" name="ssi" placeholder="Enter SSI Certificate No" class="form-control" ng-model="model.ssi">
                                   <p ng-show="companyForm.ssi.$invalid && !companyForm.ssi.$pristine" class="help-block">Enter valid SSI NO</p>
                                 </div>
                             </div>
@@ -81,8 +81,8 @@
                             <div class="form-group">
                                 <label class="col-sm-3 control-label">TAN NO</label>
                                 <div class="col-sm-9">
-                                  <input type="text" name="tanNo" placeholder="Enter Company TAN Number" class="form-control" ng-model="model.tanNo">
-                                  <p ng-show="companyForm.tanNo.$invalid && !companyForm.tanNo.$pristine" class="help-block">Enter valid TAN Number</p>
+                                  <input type="text" name="tan" placeholder="Enter Company TAN Number" class="form-control" ng-model="model.tan">
+                                  <p ng-show="companyForm.tan.$invalid && !companyForm.tan.$pristine" class="help-block">Enter valid TAN Number</p>
                                 </div>
                             </div>
                             <div class="form-group">
