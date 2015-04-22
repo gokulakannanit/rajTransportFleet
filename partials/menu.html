@@ -41,14 +41,14 @@
             <span>Asset Management</span>
         </a>
     </li>
-    <li class='has-sub'>
+    <li ng-class="{'highlight':(activeMenu=='vehicleInfo')}">
         <a href='#'>
             <div class="fs1" aria-hidden="true" data-icon="&#xe052;"></div>
             <span>Vehicle Management</span>
         </a>
         <ul>
-            <li>
-                <a href='#'>
+            <li ng-class="{'highlight':(activeMenu=='vehicleInfo')}">
+        <a ui-sref="vehicleInfo">
                     <span>Vehicle Information</span>
                 </a>
             </li>

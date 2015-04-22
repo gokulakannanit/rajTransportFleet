@@ -46,6 +46,16 @@ myAppDev.config(function($stateProvider, $urlRouterProvider) {
         templateUrl: 'modules/vendor/subModule/add',
         controller:  'vendor.addController'
     })
+      .state('vehicle', {
+        url: '/vehicleInfo',
+        templateUrl: 'modules/vehicleInfo',
+        controller:  'vehicleInfo.mainController'
+    })
+    .state('vehicleDetail', {
+        url: '/vehicleDetail/:isEdit/:editId',
+        templateUrl: 'modules/vehicleInfo/subModule/add',
+        controller:  'vehicleInfo.addController'
+    })
   $urlRouterProvider.otherwise('/home');
 
 });
