@@ -1,5 +1,5 @@
 <?php
-
+header('Content-Type: application/json');
 $con = mysqli_connect("localhost","root","","logistics");
 
 // Check connection

@@ -46,7 +46,7 @@
                                 <label class="col-sm-3 control-label"><span ng-if="model.typeOfCompany === 'P'">Add Partners</span><span ng-if="model.typeOfCompany === 'S'">Propriteship</span></label>
                                 <div class="col-sm-9">
                                     <div auto-complete url="/search" model="data.tags" ng-if="model.typeOfCompany === 'P'"></div>
-                                    <select class="form-control" name="owners" ng-if="model.typeOfCompany === 'S'" ng-model="owners" required>
+                                    <select class="form-control" name="owners" ng-if="model.typeOfCompany === 'S'" ng-model="model.owners" required>
                                         <option value="">-- Select Owner --</option>
                                         <option value="Raj">RAJ</option>
                                         <option value="Vignesh">VIGNESH</option>
@@ -71,11 +71,11 @@
                                   <p ng-show="companyForm.ssi.$invalid && !companyForm.ssi.$pristine" class="help-block">Enter valid SSI NO</p>
                                 </div>
                             </div>
-                            <div class="form-group" ng-class="{ 'has-error' : companyForm.panNumber.$invalid && !companyForm.panNumber.$pristine }">
+                            <div class="form-group" ng-class="{ 'has-error' : companyForm.pan.$invalid && !companyForm.pan.$pristine }">
                                 <label class="col-sm-3 control-label">PAN NO</label>
                                 <div class="col-sm-9">
-                                  <input type="text" name="panNumber" placeholder="Enter Company PAN Number" class="form-control" ng-model="model.panNumber" ng-minlength="10" ng-maxlength="10" ng-pattern="/[A-Za-z]{5}\d{4}[A-Za-z]{1}/">
-                                  <p ng-show="companyForm.panNumber.$invalid && !companyForm.panNumber.$pristine" class="help-block">Enter valid PAN Number</p>
+                                  <input type="text" name="pan" placeholder="Enter Company PAN Number" class="form-control" ng-model="model.pan" ng-minlength="10" ng-maxlength="10" ng-pattern="/[A-Za-z]{5}\d{4}[A-Za-z]{1}/">
+                                  <p ng-show="companyForm.pan.$invalid && !companyForm.pan.$pristine" class="help-block">Enter valid PAN Number</p>
                                 </div>
                             </div>
                             <div class="form-group">

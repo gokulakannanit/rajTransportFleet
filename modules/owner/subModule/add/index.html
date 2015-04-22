@@ -16,13 +16,13 @@
                     <form class="form-horizontal" role="form" name="ownerForm">
                         <div class="col-md-6 col-sm-6 col-xs-12">
                             
-                            <div class="form-group" ng-class="{ 'has-error' : ownerForm.ownerName.$invalid && !ownerForm.ownerName.$pristine }">
+                            <div class="form-group" ng-class="{ 'has-error' : ownerForm.name.$invalid && !ownerForm.name.$pristine }">
                                 <label class="col-sm-3 control-label">owner Name</label>
                                 <div class="col-sm-9">                              
-                                    <input type="text" class="form-control" name="ownerName" placeholder="owner Registered Name" ng-model="model.ownerName" required>
-                                    <p ng-show="ownerForm.ownerName.$invalid && !ownerForm.ownerName.$pristine" class="help-block">owner name is required.</p>
+                                    <input type="text" class="form-control" name="name" placeholder="owner Registered Name" ng-model="model.name" required>
+                                    <p ng-show="ownerForm.name.$invalid && !ownerForm.name.$pristine" class="help-block">owner name is required.</p>
                                 </div>
-                            </div>                    
+                            </div>
                             <div class="form-group" ng-class="{ 'has-error' : ownerForm.address.$invalid && !ownerForm.address.$pristine }">
                                 <label class="col-sm-3 control-label">Address</label>
                                 <div class="col-sm-9">                              
@@ -41,7 +41,7 @@
                             <div class="form-group" ng-class="{ 'has-error' : ownerForm.panNumber.$invalid && !ownerForm.panNumber.$pristine }">
                                 <label class="col-sm-3 control-label">PAN NO</label>
                                 <div class="col-sm-9">
-                                  <input type="text" name="panNumber" placeholder="Enter owner PAN Number" class="form-control" ng-model="model.panNumber" ng-minlength="10" ng-maxlength="10" ng-pattern="/[A-Za-z]{5}\d{4}[A-Za-z]{1}/">
+                                  <input type="text" name="panNumber" placeholder="Enter owner PAN Number" class="form-control" ng-model="model.pan" ng-minlength="10" ng-maxlength="10" ng-pattern="/[A-Za-z]{5}\d{4}[A-Za-z]{1}/">
                                   <p ng-show="ownerForm.panNumber.$invalid && !ownerForm.panNumber.$pristine" class="help-block">Enter valid PAN Number</p>
                                 </div>
                             </div>                            

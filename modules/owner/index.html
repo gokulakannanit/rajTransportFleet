@@ -24,9 +24,10 @@
                             <tr>
                                 <th>#ID</th>
                                 <th> owner Name</th>
-                                <th class="hidden-phone">Owner</th>
-                                <th class="hidden-phone">Status</th>
+                                <th class="hidden-phone">email</th>
                                 <th class="hidden-phone">Address</th>
+                                <th class="hidden-phone">Pan Number</th>
+                                <th class="hidden-phone">Phone Number</th>
                                 <th class="hidden-phone">Actions</th>
                             </tr>
                         </thead>
@@ -37,11 +38,10 @@
                             <tr ng-repeat="owner in ownerList | filter:search">
                                 <td>{{::($index+1)}}</td>
                                 <td>{{::owner.name}}</td>
-                                <td>{{::owner.owners}}</td>
-                                <td class="hidden-phone">
-                                    <span class="label label label-info">New</span>
-                                </td>
+                                <td>{{::owner.email}}</td>
                                 <td>{{::owner.address}}</td>
+                                <td>{{::owner.pan}}</td>
+                                <td>{{::owner.phone}}</td>
                                 <td style="max-width:80px">
                                     <a ui-sref="ownerDetail({ isEdit: 'update', editId: owner.id })" class="btn btn-xs btn-info" data-original-title="">
                                         <i class="fa fa-edit"></i> Edit

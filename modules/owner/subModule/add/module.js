@@ -10,9 +10,8 @@ angular.module('mainModule').controller('owner.addController', ['$rootScope', '$
 				name:'',
                 phone:'',
 				address:'',
-				owners:'',
 				email:'',
-				pan:'',
+				pan:''
 		   };
    	}
 

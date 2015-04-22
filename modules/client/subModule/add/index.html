@@ -16,11 +16,11 @@
                     <form class="form-horizontal" role="form" name="clientForm">
                         <div class="col-md-6 col-sm-6 col-xs-12">
                             
-                            <div class="form-group" ng-class="{ 'has-error' : clientForm.comapnyName.$invalid && !clientForm.name.$pristine }">
+                            <div class="form-group" ng-class="{ 'has-error' : clientForm.companyName.$invalid && !clientForm.companyName.$pristine }">
                                 <label class="col-sm-3 control-label">Company Name</label>
                                 <div class="col-sm-9">                              
-                                    <input type="text" class="form-control" name="name" placeholder="Company Name" ng-model="model.name" required>
-                                    <p ng-show="clientForm.name.$invalid && !clientForm.name.$pristine" class="help-block">Comapny name is required.</p>
+                                    <input type="text" class="form-control" name="companyName" placeholder="Company Name" ng-model="model.companyName" required>
+                                    <p ng-show="clientForm.companyName.$invalid && !clientForm.companyName.$pristine" class="help-block">Comapny name is required.</p>
                                 </div>
                             </div>                    
                             <div class="form-group" ng-class="{ 'has-error' : clientForm.address.$invalid && !clientForm.address.$pristine }">

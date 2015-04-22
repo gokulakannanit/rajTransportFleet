@@ -25,7 +25,8 @@
                                 <th>#ID</th>
                                 <th> Company Name</th>
                                 <th class="hidden-phone">Owner</th>
-                                <th class="hidden-phone">Status</th>
+                                <th class="hidden-phone">Pan Number</th>
+                                <th class="hidden-phone">Email</th>
                                 <th class="hidden-phone">Address</th>
                                 <th class="hidden-phone">Actions</th>
                             </tr>
@@ -37,9 +38,9 @@
                             <tr ng-repeat="company in companyList | filter:search">
                                 <td>{{::($index+1)}}</td>
                                 <td>{{::company.companyName}}</td>
-                                <td class="hidden-phone">
-                                    <span class="label label label-info">New</span>
-                                </td>
+                                <td>{{::company.owners}}</td>
+                                <td>{{::company.pan}}</td>
+                                <td>{{::company.email}}</td>
                                 <td>{{::company.address}}</td>
                                 <td style="max-width:80px">
                                     <a ui-sref="companyDetail({ isEdit: 'update', editId: company.id })" class="btn btn-xs btn-info" data-original-title="">

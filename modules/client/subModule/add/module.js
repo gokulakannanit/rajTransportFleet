@@ -11,8 +11,7 @@ angular.module('mainModule').controller('client.addController', ['$rootScope', '
 				address:'',
 				contactPerson:'',
 				email:'',
-				phone:'',
-				
+				phone:''				
 		   };
    	}
 
