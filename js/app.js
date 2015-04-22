@@ -36,6 +36,16 @@ myAppDev.config(function($stateProvider, $urlRouterProvider) {
         templateUrl: 'modules/client/subModule/add',
         controller:  'client.addController'
     })
+    .state('vendor', {
+        url: '/vendor',
+        templateUrl: 'modules/vendor',
+        controller:  'vendor.mainController'
+    })
+    .state('vendorDetail', {
+        url: '/vendorDetail/:isEdit/:editId',
+        templateUrl: 'modules/vendor/subModule/add',
+        controller:  'vendor.addController'
+    })
   $urlRouterProvider.otherwise('/home');
 
 });
