@@ -18,9 +18,9 @@
 		<div class="row">
 			<form name="companyForm">				
 				<div class="col-lg-5">
-					<div class="form-group" ng-class="{ 'has-error' : companyForm.tags.$invalid }">
+					<div class="form-group" ng-class="{ 'has-error' : companyForm.ownerName.$invalid }">
 						<label class="col-sm-3 control-label">Company Name</label>
-						<ft-tag-input name="owner" ng-model="owner" auto-complete-source="tagList"></ft-tag-input>
+						<ft-tag-input name="ownerName" min-value="4" formname="companyForm" ng-model="owner" auto-complete-source="tagList"></ft-tag-input>
 					</div>
 				</div>
 			</form>
