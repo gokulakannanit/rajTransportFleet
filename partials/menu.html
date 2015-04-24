@@ -29,26 +29,6 @@
             <span>Vendor Information</span>
         </a>
     </li>
-    <li ng-class="{'highlight':(activeMenu=='vehicleDetail')}">
-                <a ui-sref="vehicleDetail">
-                    <div class="fs1" aria-hidden="true" data-icon="&#xe0f8;"></div>
-                    <span>vehicle Information</span>
-                </a>
-             </li>
-    <li ng-class="{'highlight':(activeMenu=='vehicleInfo')}">
-        <a href='#'>
-            <div class="fs1" aria-hidden="true" data-icon="&#xe052;"></div>
-            <span>Vehicle Management</span>
-        </a>
-        <ul>
-            
-            <li>
-                <a href='#'>
-                    <span>Vehicle Maintenance</span>
-                </a>
-            </li>
-        </ul>
-    </li>
     <li>
         <a href='#'>
             <div class="fs1" aria-hidden="true" data-icon="&#xe0f8;"></div>
@@ -61,7 +41,24 @@
             <span>Asset Management</span>
         </a>
     </li>
-    
+    <li ng-class="{'highlight':(activeMenu=='vehicleInfo')}">
+        <a href='#'>
+            <div class="fs1" aria-hidden="true" data-icon="&#xe052;"></div>
+            <span>Vehicle Management</span>
+        </a>
+        <ul>
+            <li ng-class="{'highlight':(activeMenu=='vehicleInfo')}">
+        <a ui-sref="vehicleInfo">
+                    <span>Vehicle Information</span>
+                </a>
+            </li>
+            <li>
+                <a href='#'>
+                    <span>Vehicle Maintenance</span>
+                </a>
+            </li>
+        </ul>
+    </li>
     <li>
         <a href='#'>
             <div class="fs1" aria-hidden="true" data-icon="&#xe0e6;"></div>
