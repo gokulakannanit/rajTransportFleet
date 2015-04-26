@@ -8,13 +8,11 @@ angular.module("ngTagsInputSite", ['ngTagsInput'])
     function link(scope, elem, attr, ctrl){
         scope.tagit = scope.selectedTags.split(",");
         scope.sourceList = scope.autoCompleteSource;
-        scope.$watch('tagit', function(){
-            if(scope.tagit === 'undefined'){
-                scope.selectedTags = scope.tagit.join(",");
-                console.log("----",scope.minValue);
-                scope.myForm[scope.eleName].$setValidity((scope.tagit.length>=scope.minValue));
-            }            
-        });
+        scope.onTagAdded = function(){
+            scope.selectedTags = scope.tagit.join(",");
+            console.log("----",scope.minValue);
+            ctrl.$setValidity(scope.eleName, (scope.tagit.length>=scope.minValue));
+        }
     }
     return{
         restrict: 'AE',
@@ -23,10 +21,9 @@ angular.module("ngTagsInputSite", ['ngTagsInput'])
             selectedTags:'=ngModel',
             autoCompleteSource:'=',
             eleName:'@name',
-            myForm:'=formname',
             minValue:'@minValue'
         },
         link:link,
-        template:'<input type="hidden" name="eleName" /> <tags-input ng-model="tagit"><auto-complete source="sourceList"></auto-complete></tags-input>'
+        template:'<input type="hidden" name="eleName" /> <tags-input ng-model="tagit" on-tag-added="onTagAdded();" on-tag-removed="onTagAdded();"><auto-complete source="sourceList"></auto-complete></tags-input>'
     }
 });

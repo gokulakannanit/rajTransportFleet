@@ -42,16 +42,16 @@
                                     <p ng-show="companyForm.address.$invalid && !companyForm.address.$pristine" class="help-block">Company address is required.</p>
                                 </div>
                             </div>
-                            <div class="form-group" ng-class="{ 'has-error' : companyForm.owner.$invalid && !companyForm.owner.$pristine }">
+                            <div class="form-group" ng-class="{ 'has-error' : (companyForm.owner.$invalid && !companyForm.owner.$pristine) || (companyForm.$error.owner) }">
                                 <label class="col-sm-3 control-label"><span ng-if="model.typeOfCompany === 'P'">Add Partners</span><span ng-if="model.typeOfCompany === 'S'">Propriteship</span></label>
                                 <div class="col-sm-9">
-                                    <div auto-complete url="/search" model="data.tags" ng-if="model.typeOfCompany === 'P'"></div>
+                                    <ft-tag-input class="form-control" name="owner" min-value="2" ng-model="model.owner" auto-complete-source="ownerList" ng-if="model.typeOfCompany === 'P'"></ft-tag-input>
                                     <select class="form-control" name="owner" ng-if="model.typeOfCompany === 'S'" ng-model="model.owner" >
                                         <option value="">-- Select Owner --</option>
-                                        <option value="Raj">RAJ</option>
-                                        <option value="Vignesh">VIGNESH</option>
+                                        <option ng-repeat="data in ownerList" value="{{data}}">{{data | titleCase}}</option>
                                     </select>
                                     <p ng-show="companyForm.owner.$invalid && !companyForm.owner.$pristine" class="help-block">Owner Data is required.</p>
+                                    <p ng-show="companyForm.$error.owner" class="help-block">Minimum two owner required.</p>
                                 </div>
                             </div>
                             <div class="form-group" ng-class="{ 'has-error' : companyForm.email.$invalid && !companyForm.email.$pristine }">

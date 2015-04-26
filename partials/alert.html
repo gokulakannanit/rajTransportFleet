@@ -1,8 +1,9 @@
 <div class="alert-container col-lg-2">
-	<div ng-repeat="alert in alerts" class="alert alert-block alert-{{alert.type}} bounceInDown animated delay-250" >
-		<button data-dismiss="alert" class="close" type="button" data-original-title="">x</button>
+	<div ng-repeat="alert in alerts track by $index" class="alert alert-block alert-{{alert.type}} {{alert.animation}} animated delay-250" ng-init="alert.animation='flipInY'" >
+		<button class="close" type="button" data-original-title="" ng-click="alert.animation='flipOutY';close($index)">x</button>
 		<p>
 			{{alert.msg}}
 		</p>
+        <div class="progress-bar animated" style="width:{{alert.percent}}%"></div>
 	</div>
 </div>

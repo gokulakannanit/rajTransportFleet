@@ -1,9 +1,17 @@
-angular.module('mainModule').controller('company.addController', ['$rootScope', '$scope', '$stateParams', 'company.updateService' , function($rootScope, $scope, $stateParams, updateService){
+angular.module('mainModule')
+.controller('company.addController', ['$rootScope', '$scope', '$stateParams', 'company.updateService', 'owner.updateService' , 
+    function($rootScope, $scope, $stateParams, updateService, ownerService){
 	// get the id
 
     $rootScope.activeMenu="company";
 
     $scope.isEdit = $stateParams.isEdit;
+
+    $scope.ownerList = [];
+
+    ownerService.getOwnerList().then(function(data){
+        $scope.ownerList = data;        
+    });
    	
    	function init(){
    		 $scope.model = {

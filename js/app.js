@@ -1,4 +1,4 @@
-var myAppDev = angular.module('mainModule', ['ui.router']);
+var myAppDev = angular.module('mainModule', ['ui.router', 'ngTagsInput']);
 myAppDev.config(function($stateProvider, $urlRouterProvider) {
   $stateProvider
     .state('home', {
@@ -46,7 +46,7 @@ myAppDev.config(function($stateProvider, $urlRouterProvider) {
         templateUrl: 'modules/vendor/subModule/add',
         controller:  'vendor.addController'
     })
-      .state('vehicle', {
+    .state('vehicle', {
         url: '/vehicleInfo',
         templateUrl: 'modules/vehicleInfo',
         controller:  'vehicleInfo.mainController'
@@ -64,22 +64,45 @@ myAppDev.controller('dashboardCtrl', ['$rootScope', '$scope', function($rootScop
     $rootScope.activeMenu = 'dashboard';
 }]);
 
-myAppDev.factory('alertService', function($rootScope) {
+myAppDev.factory('alertService', function($rootScope, $timeout) {
     var alertService = {};
+
+    function addAnimation(){
+        $timeout(function(){
+            angular.forEach($rootScope.alerts, function(item){
+                item.percent = 0;
+            });
+        }, 500);
+        $timeout(function(){
+            angular.forEach($rootScope.alerts, function(item, index){
+                item.animation='flipOutY';
+            });
+        }, 3500);
+        $timeout(function(){
+            angular.forEach($rootScope.alerts, function(item, index){
+                alertService.close(index);
+            });
+        }, 4000);
+    }
 
     alertService.add = function(type, msg) {
         var icons = {'success':'check', 'danger':'times-circle-o'};
-        $rootScope.alerts.push({'type': type, 'msg': msg, 'icon':icons[type]});
+        $rootScope.alerts.push({'type': type, 'msg': msg, 'icon':icons[type], percent:100});
+        addAnimation();
     };
 
     alertService.clear = function(){
         $rootScope.alerts = [];
-    }            
+    }
+
+    alertService.close = function(index){
+        $rootScope.alerts.splice(Number(index), 1);
+    }             
 
     return alertService;
 });
 
-myAppDev.factory('modalService', function($rootScope, $q) {
+myAppDev.factory('modalService', function($rootScope, $q, $timeout) {
     var modalService = {}, defer,
     buttons = {'delete':'danger'};
 
@@ -88,7 +111,7 @@ myAppDev.factory('modalService', function($rootScope, $q) {
         $rootScope.modalInitiated = true;
         $rootScope.ftModal = obj;
         $rootScope.ftModal.button = buttons[obj.action];
-        $rootScope.ftModal.show = true;
+        $rootScope.ftModal.show = true;        
         return defer.promise;
     };
 
@@ -118,12 +141,18 @@ myAppDev.directive("ftModal", function () {
 
 });
 
-myAppDev.directive("ftAlert", function () {
+myAppDev.directive("ftAlert", function ($timeout, alertService) {
     function link(scope, element, attrs) {
-
+        var selectedAlert;
+        scope.close = function (val){
+            selectedAlert = val;
+            $timeout(function(){
+                alertService.close(selectedAlert);
+            }, 500);
+        }
     }
     return {
-        restrict: "E",
+        restrict: "AE",
         replace: true,
         link: link,
         templateUrl: 'partials/alert.html'
@@ -131,14 +160,37 @@ myAppDev.directive("ftAlert", function () {
 
 });
 
+myAppDev.directive("ftTagInput", function(){
+
+    function link(scope, elem, attr, ctrl){
+        scope.tagit = [];
+        if(scope.selectedTags !== ''){
+            scope.tagit = scope.selectedTags.split(",");
+        }        
+        scope.sourceList = scope.autoCompleteSource;
+        scope.onTagAdded = function(){
+            scope.selectedTags = scope.tagit.join(",");
+            ctrl.$setValidity(scope.eleName, (scope.tagit.length>=scope.minValue));
+        }
+    }
+    return{
+        restrict: 'AE',
+        require: 'ngModel',
+        scope:{
+            selectedTags:'=ngModel',
+            autoCompleteSource:'=',
+            eleName:'@name',
+            minValue:'@minValue'
+        },
+        link:link,
+        template:'<tags-input ng-model="tagit" on-tag-added="onTagAdded();" on-tag-removed="onTagAdded();"><auto-complete source="sourceList"></auto-complete></tags-input>'
+    }
+});
+
 myAppDev.controller("appController", function($rootScope){
      // create an array of alerts available globally
     $rootScope.alerts = [];
     $rootScope.ftModal = {};
-
-    $rootScope.closeAlert = function(index) {
-        $rootScope.alerts.splice(index, 1);
-    };
 });
 
 myAppDev.filter('titleCase', function() {

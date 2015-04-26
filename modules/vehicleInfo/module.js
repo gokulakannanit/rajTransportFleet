@@ -1,10 +1,10 @@
 angular.module('mainModule')
-.controller('owner.mainController', ['$rootScope', '$scope', 'modalService', 'owner.updateService', function($rootScope, $scope, modalService, updateService){
+.controller('vehicleInfo.mainController', ['$rootScope', '$scope', 'modalService', 'vehicleInfo.updateService', function($rootScope, $scope, modalService, updateService){
 	function updateList(data){
-		$scope.ownerList = data;
+		$scope.vehicleList = data;
 	}	
 	function init(){
-		$scope.ownerList = [];
+		$scope.vehicleList = [];
 		updateService.get('all').then(updateList);
 	}
 
@@ -21,34 +21,23 @@ angular.module('mainModule')
 		});
 	};
 	init();
-	$rootScope.activeMenu="owner";
+	$rootScope.activeMenu="vehicleInfo";
 }])
-.factory('owner.updateService', ['$http', '$q', '$state', 'alertService', function($http, $q, $state, alertService){
+.factory('vehicleInfo.updateService', ['$http', '$q', '$state', 'alertService', function($http, $q, $state, alertService){
 	var deferred;
 	return {
 		get: function(editId){
 			deferred = $q.defer();
-			$http.get('api/owner/getDetails.php?id='+editId).success(function(data){
+			$http.get('api/vehicleInfo/getDetails.php?id='+editId).success(function(data){
 				deferred.resolve(data);
 			})
 			return deferred.promise;
 		},
-		getOwnerList:function(data){
-			var deferred = $q.defer();
-			this.get("all").then(function(data){
-				var arr = [];
-				angular.forEach(data, function(item) {
-		            this.push(item.name);
-		        }, arr);
-		        deferred.resolve(arr);
-			})
-	        return deferred.promise;
-		},
 		add: function(data){
 			deferred = $q.defer();
-			$http.post('api/owner/addDetails.php', data).success(function(data){
+			$http.post('api/vehicleInfo/addDetails.php', data).success(function(data){
 				alertService.add("success", "Record added Successfully..");				
-				$state.go('owner');
+				$state.go('vehicleInfo');
 				deferred.resolve('');
 			}).error(function(){
 				alertService.add("danger", "Record not added, please try again later");
@@ -58,7 +47,7 @@ angular.module('mainModule')
 		},
 		delete: function(data){
 			deferred = $q.defer();
-			$http.post('api/owner/deleteRecord.php', data).success(function(data){
+			$http.post('api/vehicleInfo/deleteRecord.php', data).success(function(data){
 				alertService.add("success", "Record deleted Successfully..");
 				deferred.resolve('');
 			}).error(function(){
