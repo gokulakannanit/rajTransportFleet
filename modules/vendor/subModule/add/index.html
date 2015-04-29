@@ -1,7 +1,6 @@
 <ft-panel>
     <form class="form-horizontal" role="form" name="vendorForm">
-        <div class="col-md-6 col-sm-6 col-xs-12">
-            
+        <div class="col-md-6 col-sm-6 col-xs-12">            
             <div class="form-group" ng-class="{ 'has-error' : vendorForm.companyName.$invalid && !vendorForm.companyName.$pristine }">
                 <label class="col-sm-3 control-label">Company Name</label>
                 <div class="col-sm-9">                              
@@ -21,7 +20,6 @@
                         <option value="Raj">Tyre</option>
                         <option value="Vignesh">Electricals</option>
                     </select>
-
                     <p ng-show="vendorForm.typeOfGoods.$invalid && !vendorForm.typeOfGoods.$pristine" class="help-block">Type Of Goods is required.</p>
                 </div>
             </div>     
@@ -31,7 +29,9 @@
                     <input type="text" class="form-control" name="contactPerson" placeholder="Contact Person" ng-model="model.contactPerson" required>
                     <p ng-show="vendorForm.contactPerson.$invalid && !vendorForm.contactPerson.$pristine" class="help-block"> contactPerson is required.</p>
                 </div>
-            </div>     
+            </div>  
+        </div>
+        <div class="col-md-6 col-sm-6 col-xs-12">   
             <div class="form-group" ng-class="{ 'has-error' : vendorForm.phone.$invalid && !vendorForm.phone.$pristine }">
                 <label class="col-sm-3 control-label">Phone Number</label>
                 <div class="col-sm-9">
@@ -45,8 +45,7 @@
                     <input type="text" class="form-control" name="address" placeholder="Full Address" ng-model="model.address">
                     <p ng-show="vendorForm.address.$invalid && !vendorForm.address.$pristine" class="help-block"> address is required.</p>
                 </div>
-            </div>
-            
+            </div>            
             
             <div class="form-group" ng-class="{ 'has-error' : vendorForm.email.$invalid && !vendorForm.email.$pristine }">
                 <label class="col-sm-3 control-label">Email Id</label>
@@ -54,12 +53,13 @@
                   <input type="email " placeholder="Enter owner email" class="form-control" name="email" ng-model="model.email">
                   <p ng-show="vendorForm.email.$invalid && !vendorForm.email.$pristine" class="help-block">Enter valid email id</p>
                 </div>
-            </div>  
+            </div>
+        </div> 
         <div class="col-md-12 col-sm-12 col-xs-12 form-button">
             <div class="form-group" align="center">
-                <button type="submit" class="btn btn-sm btn-primary" ng-click="updateDetails();" ng-disabled="vendorForm.$invalid">{{ isEdit | uppercase }}</button>
-                <button type="button" class="btn btn-sm btn-warning" ng-click="reset();" ng-if="isEdit === 'add'">Reset</button>
-                <button type="button" class="btn btn-sm btn-danger" ui-sref="vendor" ng-if="isEdit === 'update'">Cancel</button>
+                <button type="submit" class="btn btn-primary" ng-click="updateDetails();" ng-disabled="vendorForm.$invalid">{{ isEdit | uppercase }}</button>
+                <button type="button" class="btn btn-default" ng-click="reset();" ng-if="isEdit === 'add'">Reset</button>
+                <button type="button" class="btn btn-default" ui-sref="vendor" ng-if="isEdit === 'update'">Cancel</button>
             </div>
         </div>
     </form>

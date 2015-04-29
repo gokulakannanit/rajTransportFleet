@@ -85,12 +85,11 @@
                 </div>
             </div>
         </div>
-
         <div class="col-md-12 col-sm-12 col-xs-12 form-button">
             <div class="form-group" align="center">
-                <button type="submit" class="btn btn-sm btn-primary" ng-click="updateDetails();" ng-disabled="companyForm.$invalid">{{ isEdit | uppercase }}</button>
-                <button type="button" class="btn btn-sm btn-default" ng-click="reset();" ng-if="isEdit === 'add'">Reset</button>
-                <button type="button" class="btn btn-sm btn-default" ui-sref="owner" ng-if="isEdit === 'update'">Cancel</button>
+                <button type="submit" class="btn btn-primary" ng-click="updateDetails();" ng-disabled="companyForm.$invalid">{{ isEdit | uppercase }}</button>
+                <button type="button" class="btn btn-default" ng-click="reset();" ng-if="isEdit === 'add'">Reset</button>
+                <button type="button" class="btn btn-default" ui-sref="company" ng-if="isEdit === 'update'">Cancel</button>
             </div>
         </div>
     </form>

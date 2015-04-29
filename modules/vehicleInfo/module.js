@@ -21,7 +21,7 @@ angular.module('mainModule')
 		});
 	};
 	init();
-	$rootScope.activeMenu="vehicleInfo";
+	$rootScope.activeMenu="vehicle";
 }])
 .factory('vehicleInfo.updateService', ['$http', '$q', '$state', 'alertService', function($http, $q, $state, alertService){
 	var deferred;
