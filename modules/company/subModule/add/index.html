@@ -3,7 +3,15 @@
         <div class="col-md-6 col-sm-6 col-xs-12">
             <div class="form-group">
                 <label class="col-sm-3 control-label" for="textinput">Type Of Company</label>
-                <div class="col-sm-9">                              
+                <div class="col-sm-9">
+                    <!-- <div class="btn-group" data-toggle="buttons">  
+                                                  <label class="btn btn-default">
+                                                    <input type="radio" value="S" ng-model="model.typeOfCompany">Sole Propriteship
+                                                  </label>
+                                                  <label class="btn btn-default">
+                                                    <input type="radio" value="P" ng-model="model.typeOfCompany">Partnership
+                                                  </label>
+                                              </div> -->                          
                     <div class="radio">
                         <label>
                             <input type="radio" value="S" ng-model="model.typeOfCompany">Sole Propriteship
@@ -82,7 +90,7 @@
                 <div class="col-sm-9">
                   <input type="text" name="phone" placeholder="Enter Company Phone Number" class="form-control" ng-model="model.phone" ng-minlength="10" ng-maxlength="10" ng-pattern="/\d{10}/">
                   <p ng-show="companyForm.phone.$invalid && !companyForm.phone.$pristine" class="help-block">Enter valid Phonenumber</p>
-                </div>
+                </div> 
             </div>
         </div>
         <div class="col-md-12 col-sm-12 col-xs-12 form-button">
