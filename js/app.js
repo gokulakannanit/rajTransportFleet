@@ -124,7 +124,21 @@ myAppDev.factory('modalService', function($rootScope, $q, $timeout) {
     return modalService;
 });
 
+myAppDev.directive("ftPanel", function () {
+    return {
+        restrict: "E",
+        transclude: true,
+        templateUrl: 'partials/panel.html'
+    };
+});
 
+myAppDev.directive("ftPanelTable", function () {
+    return {
+        restrict: "E",
+        transclude: true,
+        templateUrl: 'partials/panel-table.html'
+    };
+});
 myAppDev.directive("ftModal", function () {
     function link(scope, element, attrs) {
         scope.close = function(val){

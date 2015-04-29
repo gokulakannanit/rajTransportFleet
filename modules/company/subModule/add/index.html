@@ -1,116 +1,97 @@
-<div class="row no-gutter">
-    <div class="col-md-12 col-sm-12 col-sx-12">
-        <div class="panel panel-default">
-            <div class="panel-heading clearfix">
-                <h4>{{ isEdit | titleCase }} Company Details</h4>
-                    <ul class="links">
-                        <li>
-                            <a href="#">
-                                <i class="fa fa-list"></i>
-                            </a>
-                        </li>
-                    </ul>
+<ft-panel>
+    <form class="form-horizontal" role="form" name="companyForm">
+        <div class="col-md-6 col-sm-6 col-xs-12">
+            <div class="form-group">
+                <label class="col-sm-3 control-label" for="textinput">Type Of Company</label>
+                <div class="col-sm-9">                              
+                    <div class="radio">
+                        <label>
+                            <input type="radio" value="S" ng-model="model.typeOfCompany">Sole Propriteship
+                        </label>
+                        <label>
+                            <input type="radio" value="P" ng-model="model.typeOfCompany">Partnership
+                        </label>
+                    </div>
+                </div>
             </div>
-            <div class="panel-body">
-                <div class="row no-gutter">
-                    <form class="form-horizontal" role="form" name="companyForm">
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                            <div class="form-group">
-                                <label class="col-sm-3 control-label" for="textinput">Type Of Company</label>
-                                <div class="col-sm-9">                              
-                                    <div class="radio">
-                                        <label>
-                                            <input type="radio" value="S" ng-model="model.typeOfCompany">Sole Propriteship
-                                        </label>
-                                        <label>
-                                            <input type="radio" value="P" ng-model="model.typeOfCompany">Partnership
-                                        </label>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-group" ng-class="{ 'has-error' : companyForm.companyName.$invalid && !companyForm.companyName.$pristine }">
-                                <label class="col-sm-3 control-label">Company Name</label>
-                                <div class="col-sm-9">                              
-                                    <input type="text" class="form-control" name="companyName" placeholder="Company Registered Name" ng-model="model.companyName" required>
-                                    <p ng-show="companyForm.companyName.$invalid && !companyForm.companyName.$pristine" class="help-block">Company name is required.</p>
-                                </div>
-                            </div>                    
-                            <div class="form-group" ng-class="{ 'has-error' : companyForm.address.$invalid && !companyForm.address.$pristine }">
-                                <label class="col-sm-3 control-label">Registered Address</label>
-                                <div class="col-sm-9">                              
-                                    <input type="text" class="form-control" name="address" placeholder="Full Restered Address of the Company" ng-model="model.address" required>
-                                    <p ng-show="companyForm.address.$invalid && !companyForm.address.$pristine" class="help-block">Company address is required.</p>
-                                </div>
-                            </div>
-                            <div class="form-group" ng-class="{ 'has-error' : (companyForm.owner.$invalid && !companyForm.owner.$pristine) || (companyForm.$error.owner) }">
-                                <label class="col-sm-3 control-label"><span ng-if="model.typeOfCompany === 'P'">Add Partners</span><span ng-if="model.typeOfCompany === 'S'">Propriteship</span></label>
-                                <div class="col-sm-9">
-                                    <ft-tag-input class="form-control" name="owner" min-value="2" ng-model="model.owner" auto-complete-source="ownerList" ng-if="model.typeOfCompany === 'P'"></ft-tag-input>
-                                    <select class="form-control" name="owner" ng-if="model.typeOfCompany === 'S'" ng-model="model.owner" >
-                                        <option value="">-- Select Owner --</option>
-                                        <option ng-repeat="data in ownerList" value="{{data}}">{{data | titleCase}}</option>
-                                    </select>
-                                    <p ng-show="companyForm.owner.$invalid && !companyForm.owner.$pristine" class="help-block">Owner Data is required.</p>
-                                    <p ng-show="companyForm.$error.owner" class="help-block">Minimum two owner required.</p>
-                                </div>
-                            </div>
-                            <div class="form-group" ng-class="{ 'has-error' : companyForm.email.$invalid && !companyForm.email.$pristine }">
-                                <label class="col-sm-3 control-label">Email Id</label>
-                                <div class="col-sm-9">
-                                  <input type="email " placeholder="Enter Company email" class="form-control" name="email" ng-model="model.email">
-                                  <p ng-show="companyForm.email.$invalid && !companyForm.email.$pristine" class="help-block">Enter valid email id</p>
-                                </div>
-                            </div>
-                        
-                        </div>
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                            <div class="form-group">
-                                <label class="col-sm-3 control-label">SSI NO</label>
-                                <div class="col-sm-9">
-                                  <input type="text" name="ssi" placeholder="Enter SSI Certificate No" class="form-control" ng-model="model.ssi">
-                                  <p ng-show="companyForm.ssi.$invalid && !companyForm.ssi.$pristine" class="help-block">Enter valid SSI NO</p>
-                                </div>
-                            </div>
-                            <div class="form-group" ng-class="{ 'has-error' : companyForm.pan.$invalid && !companyForm.pan.$pristine }">
-                                <label class="col-sm-3 control-label">PAN NO</label>
-                                <div class="col-sm-9">
-                                  <input type="text" name="pan" placeholder="Enter Company PAN Number" class="form-control" ng-model="model.pan" ng-minlength="10" ng-maxlength="10" ng-pattern="/[A-Za-z]{5}\d{4}[A-Za-z]{1}/">
-                                  <p ng-show="companyForm.pan.$invalid && !companyForm.pan.$pristine" class="help-block">Enter valid PAN Number</p>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="col-sm-3 control-label">TAN NO</label>
-                                <div class="col-sm-9">
-                                  <input type="text" name="tan" placeholder="Enter Company TAN Number" class="form-control" ng-model="model.tan">
-                                  <p ng-show="companyForm.tan.$invalid && !companyForm.tan.$pristine" class="help-block">Enter valid TAN Number</p>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="col-sm-3 control-label">Service Tax</label>
-                                <div class="col-sm-9">
-                                  <input type="text" name="serviceTaxNumber" placeholder="Enter Company service tax" class="form-control" ng-model="model.serviceTaxNumber">
-                                  <p ng-show="companyForm.serviceTaxNumber.$invalid && !companyForm.serviceTaxNumber.$pristine" class="help-block">Enter valid TAN Number</p>
-                                </div>
-                            </div>
-                            <div class="form-group" ng-class="{ 'has-error' : companyForm.phone.$invalid && !companyForm.phone.$pristine }">
-                                <label class="col-sm-3 control-label">Phone Number</label>
-                                <div class="col-sm-9">
-                                  <input type="text" name="phone" placeholder="Enter Company Phone Number" class="form-control" ng-model="model.phone" ng-minlength="10" ng-maxlength="10" ng-pattern="/\d{10}/">
-                                  <p ng-show="companyForm.phone.$invalid && !companyForm.phone.$pristine" class="help-block">Enter valid Phonenumber</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-md-12 col-sm-12 col-xs-12 form-button">
-                            <div class="form-group" align="center">
-                                <button type="submit" class="btn btn-sm btn-primary" ng-click="updateDetails();" ng-disabled="companyForm.$invalid">{{ isEdit | uppercase }}</button>
-                                <button type="button" class="btn btn-sm btn-warning" ng-click="reset();" ng-if="isEdit === 'add'">Reset</button>
-                                <button type="button" class="btn btn-sm btn-danger" ui-sref="company" ng-if="isEdit === 'update'">Cancel</button>
-                            </div>
-                        </div>
-                    </form>
+            <div class="form-group" ng-class="{ 'has-error' : companyForm.companyName.$invalid && !companyForm.companyName.$pristine }">
+                <label class="col-sm-3 control-label">Company Name</label>
+                <div class="col-sm-9">                              
+                    <input type="text" class="form-control" name="companyName" placeholder="Company Registered Name" ng-model="model.companyName" required>
+                    <p ng-show="companyForm.companyName.$invalid && !companyForm.companyName.$pristine" class="help-block">Company name is required.</p>
+                </div>
+            </div>                    
+            <div class="form-group" ng-class="{ 'has-error' : companyForm.address.$invalid && !companyForm.address.$pristine }">
+                <label class="col-sm-3 control-label">Registered Address</label>
+                <div class="col-sm-9">                              
+                    <input type="text" class="form-control" name="address" placeholder="Full Restered Address of the Company" ng-model="model.address" required>
+                    <p ng-show="companyForm.address.$invalid && !companyForm.address.$pristine" class="help-block">Company address is required.</p>
+                </div>
+            </div>
+            <div class="form-group" ng-class="{ 'has-error' : (companyForm.owner.$invalid && !companyForm.owner.$pristine) || (companyForm.$error.owner) }">
+                <label class="col-sm-3 control-label"><span ng-if="model.typeOfCompany === 'P'">Add Partners</span><span ng-if="model.typeOfCompany === 'S'">Propriteship</span></label>
+                <div class="col-sm-9">
+                    <ft-tag-input class="form-control" name="owner" min-value="2" ng-model="model.owner" auto-complete-source="ownerList" ng-if="model.typeOfCompany === 'P'"></ft-tag-input>
+                    <select class="form-control" name="owner" ng-if="model.typeOfCompany === 'S'" ng-model="model.owner" >
+                        <option value="">-- Select Owner --</option>
+                        <option ng-repeat="data in ownerList" value="{{data}}">{{data | titleCase}}</option>
+                    </select>
+                    <p ng-show="companyForm.owner.$invalid && !companyForm.owner.$pristine" class="help-block">Owner Data is required.</p>
+                    <p ng-show="companyForm.$error.owner" class="help-block">Minimum two owner required.</p>
+                </div>
+            </div>
+            <div class="form-group" ng-class="{ 'has-error' : companyForm.email.$invalid && !companyForm.email.$pristine }">
+                <label class="col-sm-3 control-label">Email Id</label>
+                <div class="col-sm-9">
+                  <input type="email " placeholder="Enter Company email" class="form-control" name="email" ng-model="model.email">
+                  <p ng-show="companyForm.email.$invalid && !companyForm.email.$pristine" class="help-block">Enter valid email id</p>
+                </div>
+            </div>        
+        </div>
+        <div class="col-md-6 col-sm-6 col-xs-12">
+            <div class="form-group">
+                <label class="col-sm-3 control-label">SSI NO</label>
+                <div class="col-sm-9">
+                  <input type="text" name="ssi" placeholder="Enter SSI Certificate No" class="form-control" ng-model="model.ssi">
+                  <p ng-show="companyForm.ssi.$invalid && !companyForm.ssi.$pristine" class="help-block">Enter valid SSI NO</p>
+                </div>
+            </div>
+            <div class="form-group" ng-class="{ 'has-error' : companyForm.pan.$invalid && !companyForm.pan.$pristine }">
+                <label class="col-sm-3 control-label">PAN NO</label>
+                <div class="col-sm-9">
+                  <input type="text" name="pan" placeholder="Enter Company PAN Number" class="form-control" ng-model="model.pan" ng-minlength="10" ng-maxlength="10" ng-pattern="/[A-Za-z]{5}\d{4}[A-Za-z]{1}/">
+                  <p ng-show="companyForm.pan.$invalid && !companyForm.pan.$pristine" class="help-block">Enter valid PAN Number</p>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-3 control-label">TAN NO</label>
+                <div class="col-sm-9">
+                  <input type="text" name="tan" placeholder="Enter Company TAN Number" class="form-control" ng-model="model.tan">
+                  <p ng-show="companyForm.tan.$invalid && !companyForm.tan.$pristine" class="help-block">Enter valid TAN Number</p>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-3 control-label">Service Tax</label>
+                <div class="col-sm-9">
+                  <input type="text" name="serviceTaxNumber" placeholder="Enter Company service tax" class="form-control" ng-model="model.serviceTaxNumber">
+                  <p ng-show="companyForm.serviceTaxNumber.$invalid && !companyForm.serviceTaxNumber.$pristine" class="help-block">Enter valid TAN Number</p>
+                </div>
+            </div>
+            <div class="form-group" ng-class="{ 'has-error' : companyForm.phone.$invalid && !companyForm.phone.$pristine }">
+                <label class="col-sm-3 control-label">Phone Number</label>
+                <div class="col-sm-9">
+                  <input type="text" name="phone" placeholder="Enter Company Phone Number" class="form-control" ng-model="model.phone" ng-minlength="10" ng-maxlength="10" ng-pattern="/\d{10}/">
+                  <p ng-show="companyForm.phone.$invalid && !companyForm.phone.$pristine" class="help-block">Enter valid Phonenumber</p>
                 </div>
             </div>
         </div>
-    </div>
-</div>
+
+        <div class="col-md-12 col-sm-12 col-xs-12 form-button">
+            <div class="form-group" align="center">
+                <button type="submit" class="btn btn-sm btn-primary" ng-click="updateDetails();" ng-disabled="companyForm.$invalid">{{ isEdit | uppercase }}</button>
+                <button type="button" class="btn btn-sm btn-default" ng-click="reset();" ng-if="isEdit === 'add'">Reset</button>
+                <button type="button" class="btn btn-sm btn-default" ui-sref="owner" ng-if="isEdit === 'update'">Cancel</button>
+            </div>
+        </div>
+    </form>
+</ft-panel>

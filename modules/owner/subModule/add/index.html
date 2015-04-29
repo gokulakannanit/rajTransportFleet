@@ -1,69 +1,51 @@
-<div class="row no-gutter">
-    <div class="col-md-12 col-sm-12 col-sx-12">
-        <div class="panel panel-default">
-            <div class="panel-heading clearfix">
-                <h4>{{ isEdit | titleCase }} Owner Details</h4>
-                    <ul class="links">
-                        <li>
-                            <a href="#">
-                                <i class="fa fa-list"></i>
-                            </a>
-                        </li>
-                    </ul>
+<ft-panel>
+    <form class="form-horizontal" role="form" name="ownerForm">
+        <div class="col-md-6 col-sm-6 col-xs-12">            
+            <div class="form-group" ng-class="{ 'has-error' : ownerForm.name.$invalid && !ownerForm.name.$pristine }">
+                <label class="col-sm-3 control-label">Owner Name</label>
+                <div class="col-sm-9">                              
+                    <input type="text" class="form-control" name="name" placeholder="owner Registered Name" ng-model="model.name" required>
+                    <p ng-show="ownerForm.name.$invalid && !ownerForm.name.$pristine" class="help-block">owner name is required.</p>
+                </div>
             </div>
-            <div class="panel-body">
-                <div class="row no-gutter">
-                    <form class="form-horizontal" role="form" name="ownerForm">
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                            
-                            <div class="form-group" ng-class="{ 'has-error' : ownerForm.name.$invalid && !ownerForm.name.$pristine }">
-                                <label class="col-sm-3 control-label">Owner Name</label>
-                                <div class="col-sm-9">                              
-                                    <input type="text" class="form-control" name="name" placeholder="owner Registered Name" ng-model="model.name" required>
-                                    <p ng-show="ownerForm.name.$invalid && !ownerForm.name.$pristine" class="help-block">owner name is required.</p>
-                                </div>
-                            </div>
-                            <div class="form-group" ng-class="{ 'has-error' : ownerForm.address.$invalid && !ownerForm.address.$pristine }">
-                                <label class="col-sm-3 control-label">Address</label>
-                                <div class="col-sm-9">                              
-                                    <input type="text" class="form-control" name="address" placeholder="Full Address of the owner" ng-model="model.address" required>
-                                    <p ng-show="ownerForm.address.$invalid && !ownerForm.address.$pristine" class="help-block">owner address is required.</p>
-                                </div>
-                            </div>
-                            
-                            <div class="form-group" ng-class="{ 'has-error' : ownerForm.email.$invalid && !ownerForm.email.$pristine }">
-                                <label class="col-sm-3 control-label">Email Id</label>
-                                <div class="col-sm-9">
-                                  <input type="email " placeholder="Enter owner email" class="form-control" name="email" ng-model="model.email">
-                                  <p ng-show="ownerForm.email.$invalid && !ownerForm.email.$pristine" class="help-block">Enter valid email id</p>
-                                </div>
-                            </div>
-                            <div class="form-group" ng-class="{ 'has-error' : ownerForm.pan.$invalid && !ownerForm.pan.$pristine }">
-                                <label class="col-sm-3 control-label">PAN NO</label>
-                                <div class="col-sm-9">
-                                  <input type="text" name="pan" placeholder="Enter owner PAN Number" class="form-control" ng-model="model.pan" ng-minlength="10" ng-maxlength="10" ng-pattern="/[A-Za-z]{5}\d{4}[A-Za-z]{1}/">
-                                  <p ng-show="ownerForm.pan.$invalid && !ownerForm.pan.$pristine" class="help-block">Enter valid PAN Number</p>
-                                </div>
-                            </div>                            
-                            <div class="form-group" ng-class="{ 'has-error' : ownerForm.phone.$invalid && !ownerForm.phone.$pristine }">
-                                <label class="col-sm-3 control-label">Phone Number</label>
-                                <div class="col-sm-9">
-                                  <input type="text" name="phone" placeholder="Enter owner Phone Number" class="form-control" ng-model="model.phone" ng-minlength="10" ng-maxlength="10" ng-pattern="/\d{10}/">
-                                  <p ng-show="ownerForm.phone.$invalid && !ownerForm.phone.$pristine" class="help-block">Enter valid Phonenumber</p>
-                                </div>
-                            </div>
-                        
-
-                        <div class="col-md-12 col-sm-12 col-xs-12 form-button">
-                            <div class="form-group" align="center">
-                                <button type="submit" class="btn btn-sm btn-primary" ng-click="updateDetails();" ng-disabled="ownerForm.$invalid">{{ isEdit | uppercase }}</button>
-                                <button type="button" class="btn btn-sm btn-warning" ng-click="reset();" ng-if="isEdit === 'add'">Reset</button>
-                                <button type="button" class="btn btn-sm btn-danger" ui-sref="owner" ng-if="isEdit === 'update'">Cancel</button>
-                            </div>
-                        </div>
-                    </form>
+            <div class="form-group" ng-class="{ 'has-error' : ownerForm.address.$invalid && !ownerForm.address.$pristine }">
+                <label class="col-sm-3 control-label">Address</label>
+                <div class="col-sm-9">                              
+                    <input type="text" class="form-control" name="address" placeholder="Full Address of the owner" ng-model="model.address" required>
+                    <p ng-show="ownerForm.address.$invalid && !ownerForm.address.$pristine" class="help-block">owner address is required.</p>
+                </div>
+            </div>
+            
+            <div class="form-group" ng-class="{ 'has-error' : ownerForm.email.$invalid && !ownerForm.email.$pristine }">
+                <label class="col-sm-3 control-label">Email Id</label>
+                <div class="col-sm-9">
+                  <input type="email " placeholder="Enter owner email" class="form-control" name="email" ng-model="model.email">
+                  <p ng-show="ownerForm.email.$invalid && !ownerForm.email.$pristine" class="help-block">Enter valid email id</p>
                 </div>
             </div>
         </div>
-    </div>
-</div>
+        <div class="col-md-6 col-sm-6 col-xs-12">
+            <div class="form-group" ng-class="{ 'has-error' : ownerForm.pan.$invalid && !ownerForm.pan.$pristine }">
+                <label class="col-sm-3 control-label">PAN NO</label>
+                <div class="col-sm-9">
+                  <input type="text" name="pan" placeholder="Enter owner PAN Number" class="form-control" ng-model="model.pan" ng-minlength="10" ng-maxlength="10" ng-pattern="/[A-Za-z]{5}\d{4}[A-Za-z]{1}/">
+                  <p ng-show="ownerForm.pan.$invalid && !ownerForm.pan.$pristine" class="help-block">Enter valid PAN Number</p>
+                </div>
+            </div>                            
+            <div class="form-group" ng-class="{ 'has-error' : ownerForm.phone.$invalid && !ownerForm.phone.$pristine }">
+                <label class="col-sm-3 control-label">Phone Number</label>
+                <div class="col-sm-9">
+                  <input type="text" name="phone" placeholder="Enter owner Phone Number" class="form-control" ng-model="model.phone" ng-minlength="10" ng-maxlength="10" ng-pattern="/\d{10}/">
+                  <p ng-show="ownerForm.phone.$invalid && !ownerForm.phone.$pristine" class="help-block">Enter valid Phonenumber</p>
+                </div>
+            </div>            
+        </div>
+        <div class="col-md-12 col-sm-12 col-xs-12 form-button">
+            <div class="form-group" align="center">
+                <button type="submit" class="btn btn-primary" ng-click="updateDetails();" ng-disabled="ownerForm.$invalid">{{ isEdit | uppercase }}</button>
+                <button type="button" class="btn btn-default" ng-click="reset();" ng-if="isEdit === 'add'">Reset</button>
+                <button type="button" class="btn btn-default" ui-sref="owner" ng-if="isEdit === 'update'">Cancel</button>
+            </div>
+        </div>
+    </form>
+</ft-panel>
