@@ -1,0 +1,10 @@
+<div class="tabbable-panel">
+  <div class="tabbable-line">
+     <ul class="nav nav-tabs">
+        <li ng-repeat="item in links" ng-class="{'active':(selectedTab === $index)}">
+            <a ui-sref="{{item.view}}" ng-click="selectTab($index);">{{item.label}}</a>
+        </li>
+     </ul>
+     <div class="tab-content" ui-view="container"></div>
+  </div>
+</div>

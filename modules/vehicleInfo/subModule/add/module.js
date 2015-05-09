@@ -1,43 +1,12 @@
-angular.module('mainModule').controller('vehicleInfo.addController', ['$rootScope', '$scope', '$stateParams', 'vehicleInfo.updateService' , function($rootScope, $scope, $stateParams, updateService){
+angular.module('mainModule').controller('vehicleInfo.addController', ['$rootScope', '$scope', '$state', '$stateParams' , function($rootScope, $scope, $state, $stateParams){
 	// get the id
-
-    $rootScope.activeMenu="Vehicle Information";
-
+    $rootScope.activeMenu="vehicle";
     $scope.isEdit = $stateParams.isEdit;
-   	
-   	function init(){
-   		 $scope.model = {
-			vehicleNo:'',
-            date:'',
-            amtPurchased:'',
-            modelYear:'',
-            make:'',
-            typeOfVehicle:'',
-            chasisNo:'',
-            engineNo:'',
-            oewnership:'',
-            owner:'',
-            odometer:'',
-            fuelType:'',
-            inService:''
-		   };
-   	}
-
-    if($scope.isEdit === 'update'){
-    	updateService.get($stateParams.editId).then(function(data){
-    		$scope.model = data[0];
-    	});    	
+    $state.go('vehicleDetail.basic');
+    
+    $scope.links = [{view:'vehicleDetail.basic', label:'Basic'},{view:'vehicleDetail.maintain', label:'Maintain'}];
+    $scope.selectTab = function(index){
+        $scope.selectedTab = index;
     }
-    $scope.updateDetails = function(){
-    	updateService.add($scope.model);
-    }
-
-    $scope.reset = function(){
-    	init();
-    	$scope.vehicleInfoForm.$setPristine()
-    } 
-
-
-    init();
-
+    $scope.selectedTab = 0;
 }]);

@@ -26,9 +26,8 @@ angular.module('mainModule').controller('client.addController', ['$rootScope', '
 
     $scope.reset = function(){
     	init();
-    	$scope.clientForm.$setPristine()
+    	$scope.clientForm.$setPristine();
     }
-
 
     init();
 

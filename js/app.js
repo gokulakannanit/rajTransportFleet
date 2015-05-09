@@ -1,4 +1,4 @@
-var myAppDev = angular.module('mainModule', ['ui.router', 'ngTagsInput']);
+var myAppDev = angular.module('mainModule', ['ui.router', 'ngTagsInput', 'ngAnimate']);
 myAppDev.config(function($stateProvider, $urlRouterProvider) {
   $stateProvider
     .state('home', {
@@ -55,6 +55,22 @@ myAppDev.config(function($stateProvider, $urlRouterProvider) {
         url: '/vehicleDetail/:isEdit/:editId',
         templateUrl: 'modules/vehicleInfo/subModule/add',
         controller:  'vehicleInfo.addController'
+    })
+    .state('vehicleDetail.basic', {
+        views: {
+          url: '/basic',
+          "container": {
+            templateUrl: "modules/vehicleInfo/subModule/add/basic" 
+          }
+        }
+    })
+    .state('vehicleDetail.maintain', {
+        views: {
+          url: '/maintain',
+          "container": {
+            templateUrl: "modules/vehicleInfo/subModule/add/basic" 
+          }
+        }
     })
   $urlRouterProvider.otherwise('/home');
 
@@ -132,13 +148,6 @@ myAppDev.directive("ftPanel", function () {
     };
 });
 
-myAppDev.directive("ftPanelTable", function () {
-    return {
-        restrict: "E",
-        transclude: true,
-        templateUrl: 'partials/panel-table.html'
-    };
-});
 myAppDev.directive("ftModal", function () {
     function link(scope, element, attrs) {
         scope.close = function(val){
@@ -213,3 +222,60 @@ myAppDev.filter('titleCase', function() {
       return input.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
     };
 })
+
+myAppDev.directive("ftFormText", function($compile){
+    function link(scope, elem, attr, ctrl){
+        scope.opts = attr;
+        if(!scope.opts.type){
+            scope.opts.type = "text";
+        }
+        scope.form = ctrl;
+
+        $compile(elem.contents())(scope);
+        
+        function validateEmail(email) {
+            var expr = /^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
+            return expr.test(email);
+        }
+        function validateMinLength(val){
+            return !(val.length >= scope.opts.minlen);
+        }
+        function validateMaxLength(val){
+            return !(val.length <= scope.opts.maxlen);
+        }
+        var input = $(elem).find("input");
+
+        if(scope.opts.required){
+            input.attr('required', 'true');
+        }
+
+        input.on("blur keyup", function(e){
+            
+            if($(this).prop('type') == "email"){
+                ctrl.$setValidity('inValid', validateEmail($(this).val()));
+            }
+
+            if(scope.opts.minlen){
+                ctrl.$setValidity('inValid', validateMinLength($(this).val()));
+            }
+
+            if(scope.opts.maxlen){
+                ctrl.$setValidity('inValid', validateMaxLength($(this).val()));
+            }
+
+            if($(this).prop('required') || $(this).val() !== ''){
+                ctrl.$setTouched(true);
+            }
+            
+        });
+    }
+    return{
+        restrict: 'AE',
+        require: 'ngModel',
+        scope:{
+            model:'=ngModel',
+        },
+        link:link,
+        templateUrl:'partials/formControl.html'
+    }
+});

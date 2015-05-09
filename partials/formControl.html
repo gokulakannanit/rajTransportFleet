@@ -1,0 +1,14 @@
+<div class="form-group" ng-class="{ 'has-error' : (form.$error.required || form.$error.inValid) && form.$touched}">
+    <label class="col-sm-3 control-label" for="{{opts.name}}">{{opts.labeltext}}</label>
+    <div class="col-sm-9">
+
+        <input  type="{{opts.type}}" 
+                class="form-control" 
+                name="{{opts.name}}" 
+                placeholder="Enter {{opts.labeltext}}" 
+                ng-model="model"/>
+
+        <p ng-if="form.$error.required && form.$touched" class="help-block">{{opts.labeltext}} is required.</p>
+        <p ng-if="form.$error.inValid && form.$touched" class="help-block">Enter Valid {{opts.labeltext}}.</p>
+    </div>
+</div>

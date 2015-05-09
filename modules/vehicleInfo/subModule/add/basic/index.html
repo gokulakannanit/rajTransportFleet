@@ -1,0 +1,125 @@
+<div class="container-fluid">
+   <form class="form-horizontal" role="form" name="vehicleInfoForm">
+      <div class="col-sm-12 col-sm-12 col-xs-12 col-lg-4">
+         <div class="form-group" ng-class="{ 'has-error' : vehicleInfoForm.vehicleNo.$invalid && !vehicleInfoForm.vehicleNo.$pristine }">
+            <label class="col-sm-3 control-label">Vehicle No</label>
+            <div class="col-sm-9">
+               <input type="text" class="form-control" name="vehicleNo" placeholder="Vehicle No" ng-model="model.vehicleNo" required>
+               <p ng-show="vehicleInfoForm.vehicleNo.$invalid && !vehicleInfoForm.vehicleNo.$pristine" class="help-block">Vehicle No is required.</p>
+            </div>
+         </div>
+         <div class="form-group" ng-class="{ 'has-error' : vehicleInfoForm.date.$invalid && !vehicleInfoForm.date.$pristine }">
+            <label class="col-sm-3 control-label">Date</label>
+            <div class="col-sm-9">
+               <input type="text" class="form-control" name="date" placeholder="Date" ng-model="model.date">
+               <p ng-show="vehicleInfoForm.date.$invalid && !vehicleInfoForm.date.$pristine" class="help-block">Date is required.</p>
+            </div>
+         </div>
+         <div class="form-group" ng-class="{ 'has-error' : vehicleInfoForm.amtPurchased.$invalid && !vehicleInfoForm.amtPurchased.$pristine }">
+            <label class="col-sm-3 control-label">Amt Purchased</label>
+            <div class="col-sm-9">
+               <input type="text" class="form-control" name="amtPurchased" placeholder="Amt Purchased" ng-model="model.amtPurchased">
+               <p ng-show="vehicleInfoForm.amtPurchased.$invalid && !vehicleInfoForm.amtPurchased.$pristine" class="help-block">Amt Purchased is required.</p>
+            </div>
+         </div>
+         <div class="form-group" ng-class="{ 'has-error' : vehicleInfoForm.modelYear.$invalid && !vehicleInfoForm.modelYear.$pristine }">
+            <label class="col-sm-3 control-label">Model</label>
+            <div class="col-sm-9">
+               <input type="text" class="form-control" name="modelYear" placeholder="Model/Year" ng-model="model.modelYear">
+               <p ng-show="vehicleInfoForm.modelYear.$invalid && !vehicleInfoForm.modelYear.$pristine" class="help-block">Model is required.</p>
+            </div>
+         </div>
+         <div class="form-group" ng-class="{ 'has-error' : vehicleInfoForm.make.$invalid && !vehicleInfoForm.make.$pristine }">
+            <label class="col-sm-3 control-label">Make</label>
+            <div class="col-sm-9">
+               <select class="form-control" name="make" ng-model="model.make" >
+                  <option value="">-- Make --</option>
+                  <option value="TATA">TATA</option>
+                  <option value="LEYLAND">LEYLAND</option>
+               </select>
+               <p ng-show="vehicleInfoForm.make.$invalid && !vehicleInfoForm.make.$pristine" class="help-block">Make is required.</p>
+            </div>
+         </div>         
+      </div>
+      <div class="col-sm-12 col-sm-12 col-xs-12 col-lg-4">                 
+         <div class="form-group" ng-class="{ 'has-error' : vehicleInfoForm.ownership.$invalid && !vehicleInfoForm.ownership.$pristine }">
+            <label class="col-sm-3 control-label">Ownership</label>
+            <div class="col-sm-9">
+               <select class="form-control" name="ownership" ng-model="model.ownership" >
+                  <option value="">-- ownership --</option>
+                  <option value="own">own</option>
+                  <option value="hire/lease">hire/lease</option>
+               </select>
+               <p ng-show="vehicleInfoForm.ownership.$invalid && !vehicleInfoForm.ownership.$pristine" class="help-block">ownership is required.</p>
+            </div>
+         </div>
+         <div class="form-group" ng-class="{ 'has-error' : vehicleInfoForm.owner.$invalid && !vehicleInfoForm.owner.$pristine }">
+            <label class="col-sm-3 control-label">Owner</label>
+            <div class="col-sm-9">
+               <input type="text" name="owner" placeholder="Enter owner" class="form-control" ng-model="model.owner">
+               <p ng-show="vehicleInfoForm.owner.$invalid && !vehicleInfoForm.owner.$pristine" class="help-block">Enter valid owner name</p>
+            </div>
+         </div>         
+         <div class="form-group" ng-class="{ 'has-error' : vehicleInfoForm.fuelType.$invalid && !vehicleInfoForm.fuelType.$pristine }">
+            <label class="col-sm-3 control-label">Fuel Type</label>
+            <div class="col-sm-9">
+               <select class="form-control" name="fuelType" ng-model="model.fuelType" >
+                  <option value="">-- fuelType --</option>
+                  <option value="Disel">Disel</option>
+                  <option value="Petrol">Petrol</option>
+                  <option value="Gas">Gas</option>
+               </select>
+               <p ng-show="vehicleInfoForm.fuelType.$invalid && !vehicleInfoForm.fuelType.$pristine" class="help-block">fuelType is required.</p>
+            </div>
+         </div>
+         <div class="form-group" ng-class="{ 'has-error' : vehicleInfoForm.typeOfVehicle.$invalid && !vehicleInfoForm.typeOfVehicle.$pristine }">
+            <label class="col-sm-3 control-label">Type Of Vehicle</label>
+            <div class="col-sm-9">
+               <select class="form-control" name="typeOfVehicle" ng-model="model.typeOfVehicle" >
+                  <option value="">-- typeOfVehicle --</option>
+                  <option value="LCV">LCV</option>
+                  <option value="HCV">HCV</option>
+               </select>
+               <p ng-show="vehicleInfoForm.typeOfVehicle.$invalid && !vehicleInfoForm.typeOfVehicle.$pristine" class="help-block">typeOfVehicle is required.</p>
+            </div>
+         </div>  
+      </div>
+      <div class="col-sm-12 col-sm-12 col-xs-12 col-lg-4">
+         <div class="form-group" ng-class="{ 'has-error' : vehicleInfoForm.chasisNo.$invalid && !vehicleInfoForm.chasisNo.$pristine }">
+            <label class="col-sm-3 control-label">Chasis No</label>
+            <div class="col-sm-9">
+               <input type="text" class="form-control" name="chasisNo" placeholder="chasisNo" ng-model="model.chasisNo" required>
+               <p ng-show="vehicleInfoForm.chasisNo.$invalid && !vehicleInfoForm.chasisNo.$pristine" class="help-block"> chasisNo is required.</p>
+            </div>
+         </div> 
+         <div class="form-group" ng-class="{ 'has-error' : vehicleInfoForm.engineNo.$invalid && !vehicleInfoForm.engineNo.$pristine }">
+            <label class="col-sm-3 control-label">Engine No</label>
+            <div class="col-sm-9">
+               <input type="text" class="form-control" name="engineNo" placeholder="engineNo" ng-model="model.engineNo" required>
+               <p ng-show="vehicleInfoForm.engineNo.$invalid && !vehicleInfoForm.engineNo.$pristine" class="help-block"> engineNo is required.</p>
+            </div>
+         </div>
+         <div class="form-group" ng-class="{ 'has-error' : vehicleInfoForm.odometer.$invalid && !vehicleInfoForm.odometer.$pristine }">
+            <label class="col-sm-3 control-label">Odometer</label>
+            <div class="col-sm-9">
+               <input type="text" name="odometer" placeholder="Enter odometer" class="form-control" ng-model="model.odometer">
+               <p ng-show="vehicleInfoForm.odometer.$invalid && !vehicleInfoForm.odometer.$pristine" class="help-block">Enter valid odometer</p>
+            </div>
+         </div>
+         <div class="form-group" ng-class="{ 'has-error' : vehicleInfoForm.inService.$invalid && !vehicleInfoForm.inService.$pristine }">
+            <label class="col-sm-3 control-label">inService</label>
+            <div class="col-sm-9">
+               <input type="text" name="inService" placeholder="inService" class="form-control" ng-model="model.inService">
+               <p ng-show="vehicleInfoForm.inService.$invalid && !vehicleInfoForm.inService.$pristine" class="help-block">In Service</p>
+            </div>
+         </div>
+      </div>
+      <div class="col-md-12 col-sm-12 col-xs-12 form-button">
+         <div class="form-group" align="center">
+             <button type="submit" class="btn btn-primary" ng-click="updateDetails();" ng-disabled="vehicleInfoForm.$invalid">{{ isEdit | uppercase }}</button>
+             <button type="button" class="btn btn-default" ng-click="reset();" ng-if="isEdit === 'add'">Reset</button>
+             <button type="button" class="btn btn-default" ui-sref="vehicle" ng-if="isEdit === 'update'">Cancel</button>
+         </div>
+     </div>
+   </form>
+</div>

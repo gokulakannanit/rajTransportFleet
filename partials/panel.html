@@ -1,8 +1,21 @@
 <div class="widget">
     <div class="widget-header bordered-bottom bordered-blue">
+        <a ui-sref="{{activeMenu}}"><i class="fa fa-chevron-left fa-2x pull-left"  ng-if="isEdit"></i></a>        
         <span class="widget-caption">{{ isEdit | titleCase }} {{ activeMenu | titleCase }} Details</span>
+        <button ui-sref="{{activeMenu}}Detail({ isEdit: 'add' })" class="btn btn-xs btn-primary pull-right" ng-if="!isEdit">
+          <span class="fa fa-plus" aria-hidden="true"></span> Add
+        </button>
     </div>
     <div class="widget-body">
-        <div class="row" ng-transclude></div>
+    	<div ng-if="!isEdit">
+	    	<div class="row">
+	            <div class="custom-search table-search">
+	                <input type="text" class="search-query" placeholder="Search here" ng-model="search.$">
+	                <i class="fa fa-search"></i>
+	            </div>
+	        </div>
+	        <div class="table-responsive" ng-transclude></div>
+        </div>
+        <div class="row" ng-transclude ng-if="isEdit"></div>
     </div>
 </div>
