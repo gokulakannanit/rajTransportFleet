@@ -16,6 +16,17 @@
 	        </div>
 	        <div class="table-responsive" ng-transclude></div>
         </div>
-        <div class="row" ng-transclude ng-if="isEdit"></div>
+        <div class="row" ng-if="isEdit">
+             <form class="form-horizontal" role="form" name="form">
+                    <div ng-transclude></div>
+                    <div class="col-md-12 col-sm-12 col-xs-12 form-button">
+                    <div class="form-group" align="center">
+                        <button type="submit" class="btn btn-primary" ng-click="updateDetails();" ng-disabled="form.$invalid">{{ isEdit | uppercase }}</button>
+                        <button type="button" class="btn btn-default" ng-click="reset();" ng-if="isEdit === 'add'">Reset</button>
+                        <button type="button" class="btn btn-default" ui-sref="{{activeMenu}}" ng-if="isEdit === 'update'">Cancel</button>
+                    </div>
+                </div>
+            </form>
+        </div>
     </div>
 </div>

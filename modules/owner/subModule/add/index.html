@@ -1,24 +1,14 @@
 <ft-panel>
-    <form class="form-horizontal" role="form" name="ownerForm">
-        <div class="col-md-6 col-sm-6 col-xs-12">            
-            <ft-form-text ng-model="model.name" name="ownerName" labeltext="Owner Name" required="true"></ft-form-text>
+    <div class="col-md-6 col-sm-6 col-xs-12">            
+        <ft-form-text ng-model="model.name" name="ownerName" labeltext="Owner Name" required="true"></ft-form-text>
 
-            <ft-form-text ng-model="model.address" name="address" labeltext="Address" required="true"></ft-form-text>
+        <ft-form-text ng-model="model.address" name="address" labeltext="Address" required="true"></ft-form-text>
 
-            <ft-form-text type="email" ng-model="model.email" name="email" labeltext="Email" ></ft-form-text>
-        </div>
-        <div class="col-md-6 col-sm-6 col-xs-12">
-            <ft-form-text ng-model="model.pan" name="pan" labeltext="PAN NO" minlen="10" maxlen="10" pattern="/[A-Za-z]{5}\d{4}[A-Za-z]{1}/"></ft-form-text>
+        <ft-form-text type="email" ng-model="model.email" name="email" labeltext="Email" ></ft-form-text>
+    </div>
+    <div class="col-md-6 col-sm-6 col-xs-12">
+        <ft-form-text ng-model="model.pan" name="pan" labeltext="PAN NO" minlen="10" maxlen="10" pattern="[A-Za-z]{5}\d{4}[A-Za-z]{1}"></ft-form-text>
 
-            <ft-form-text ng-model="model.phone" name="phone" labeltext="Phone Number" minlen="10" maxlen="10" pattern="/\d{10}/"></ft-form-text>          
-        </div>
-        
-        <div class="col-md-12 col-sm-12 col-xs-12 form-button">
-            <div class="form-group" align="center">
-                <button type="submit" class="btn btn-primary" ng-click="updateDetails();" ng-disabled="ownerForm.$invalid">{{ isEdit | uppercase }}</button>
-                <button type="button" class="btn btn-default" ng-click="reset();" ng-if="isEdit === 'add'">Reset</button>
-                <button type="button" class="btn btn-default" ui-sref="owner" ng-if="isEdit === 'update'">Cancel</button>
-            </div>
-        </div>
-    </form>
+        <ft-form-text ng-model="model.phone" name="phone" labeltext="Phone Number" minlen="10" maxlen="10" pattern="\d{10}"></ft-form-text>          
+    </div> 
 </ft-panel>
