@@ -7,8 +7,8 @@
         <ft-form-text type="email" ng-model="model.email" name="email" labeltext="Email" ></ft-form-text>
     </div>
     <div class="col-md-6 col-sm-6 col-xs-12">
-        <ft-form-text ng-model="model.pan" name="pan" labeltext="PAN NO" minlen="10" maxlen="10" pattern="[A-Za-z]{5}\d{4}[A-Za-z]{1}"></ft-form-text>
+        <ft-form-text ng-model="model.pan" name="pan" labeltext="PAN NO" maxlen="10" pattern="[A-Za-z]{5}\d{4}[A-Za-z]{1}"></ft-form-text>
 
-        <ft-form-text ng-model="model.phone" name="phone" labeltext="Phone Number" minlen="10" maxlen="10" pattern="\d{10}"></ft-form-text>          
+        <ft-form-text ng-model="model.phone" name="phone" labeltext="Phone Number" maxlen="10" pattern="\d{10}"></ft-form-text>          
     </div> 
 </ft-panel>
