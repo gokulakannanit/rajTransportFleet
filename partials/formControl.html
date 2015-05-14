@@ -1,19 +1,28 @@
 <div class="form-group" ng-class="{ 'has-error' : form.$invalid && form.$touched}">
     <label class="col-sm-3 control-label" for="{{opts.name}}">{{opts.labeltext}}</label>
-    <div class="col-sm-9">
+    <div class="col-sm-9">      
 
-        <input  type="{{opts.type}}" 
-                class="form-control" 
-                name="{{opts.name}}" 
-                placeholder="Enter {{opts.labeltext}}" 
-                ng-model="model"/>
+      <input  type="{{opts.type}}" 
+              class="form-control" 
+              name="{{opts.name}}" 
+              placeholder="Enter {{opts.labeltext}}" 
+              ng-model="model" ng-show="opts.type === 'text' || opts.type === 'email'"/>
 
-        <div ng-if='form.$invalid && form.$touched' class="help-block" role="alert">
-          <p ng-if="form.$error.required">This field is mandatory</p>
-          <p ng-if="form.$error.pattern">Pattern is not correct</p>
-          <p ng-if="form.$error.minlen">Minimum Length is not met</p>
-          <p ng-if="form.$error.maxlen">Maximum Length is not met</p>
-          <p ng-if="form.$error.email">Invalid email address</p>
-        </div>
+      <select class="form-control" name="{{opts.name}}" ng-model="model" ng-show="opts.type === 'select'" >
+          <option value="">-- Select {{opts.labeltext}} --</option>
+          <option ng-repeat="itemObj in source" value="{{itemObj.value}}">{{itemObj.label}}</option>
+      </select>
+
+      <div class="radio" ng-show="opts.type === 'radio'">
+          <label ng-repeat="itemObj in source" for="{{opts.name}}"><input type="radio" name="{{opts.name}}" value="{{itemObj.value}}" ng-model="$parent.model" />{{itemObj.label}}</label>
+      </div>
+
+      <div ng-if='form.$invalid && form.$touched' class="help-block" role="alert">
+        <p ng-if="form.$error.required">This field is mandatory</p>
+        <p ng-if="form.$error.pattern">Pattern is not correct</p>
+        <p ng-if="form.$error.minlen">Minimum Length is not met</p>
+        <p ng-if="form.$error.maxlen">Maximum Length is not met</p>
+        <p ng-if="form.$error.email">Invalid email address</p>
+      </div>
     </div>
 </div>

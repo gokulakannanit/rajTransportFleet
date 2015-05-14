@@ -14,6 +14,12 @@ angular.module('mainModule').controller('vendor.addController', ['$rootScope', '
         address:'',	
         email:''
 		   };
+
+        $scope.dataList =   [{label:'Battery', value:'Battery'}, 
+                            {label:'Electricals', value:'Electricals'}, 
+                            {label:'Spare Parts', value:'Spare Parts'}, 
+                            {label:'Tyre', value:'Tyre'}];
+                            
    	}
 
     if($scope.isEdit === 'update'){

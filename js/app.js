@@ -200,26 +200,29 @@ myAppDev.directive("ftTagInput", function() {
 
     function link(scope, elem, attr, ctrl) {
         scope.tagit = [];
+        scope.opts = attr;
+
         if (scope.selectedTags !== '') {
             scope.tagit = scope.selectedTags.split(",");
         }
-        scope.sourceList = scope.autoCompleteSource;
+
         scope.onTagAdded = function() {
+            ctrl.$setTouched(true);
+            ctrl.$setValidity((scope.tagit.length >= scope.opts.minlen));
             scope.selectedTags = scope.tagit.join(",");
-            ctrl.$setValidity(scope.eleName, (scope.tagit.length >= scope.minValue));
         }
+
     }
     return {
         restrict: 'AE',
         require: 'ngModel',
+        replace: true,
         scope: {
             selectedTags: '=ngModel',
-            autoCompleteSource: '=',
-            eleName: '@name',
-            minValue: '@minValue'
+            source: '='
         },
         link: link,
-        template: '<tags-input ng-model="tagit" on-tag-added="onTagAdded();" on-tag-removed="onTagAdded();"><auto-complete source="sourceList"></auto-complete></tags-input>'
+        templateUrl: 'partials/tags.html'
     }
 });
 
@@ -248,52 +251,66 @@ myAppDev.directive("ftFormText", function($compile) {
 
         $compile(elem.contents())(scope);
 
-        var input = $(elem).find("input");
+        if(scope.opts.type !== "select"){
 
-        if (scope.opts.required) {
-            input.attr('required', 'true');
-        }
+            var input = $(elem).find("input");
 
-        ctrl.$validators.minlen = function(modelValue, viewValue) {
-            if (scope.opts.minlen && viewValue !== '') {
-                return (viewValue.length >= scope.opts.minlen);
+            if (scope.opts.required) {
+                input.attr('required', 'true');
             }
-            return true;
-        }
 
-        ctrl.$validators.maxlen = function(modelValue, viewValue) {
-            if (scope.opts.maxlen && viewValue !== '') {
-                return (viewValue.length <= scope.opts.maxlen);
+            ctrl.$validators.minlen = function(modelValue, viewValue) {
+                if (scope.opts.minlen && viewValue !== '') {
+                    return (viewValue.length >= scope.opts.minlen);
+                }
+                return true;
             }
-            return true;
-        }
 
-        ctrl.$validators.pattern = function(modelValue, viewValue) {
-            if (scope.opts.pattern && viewValue !== '') {
-                var pattern = new RegExp(scope.opts.pattern);
-                return (pattern).test(viewValue);
+            ctrl.$validators.maxlen = function(modelValue, viewValue) {
+                if (scope.opts.maxlen && viewValue !== '') {
+                    return (viewValue.length <= scope.opts.maxlen);
+                }
+                return true;
             }
-            return true;
-        }
 
-        ctrl.$validators.email = function(modelValue, viewValue) {
-            if (scope.opts.type === 'email' && viewValue !== '') {
-                var expr = /^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
-                return expr.test(viewValue);
+            ctrl.$validators.pattern = function(modelValue, viewValue) {
+                if (scope.opts.pattern && viewValue !== '') {
+                    var pattern = new RegExp(scope.opts.pattern);
+                    return (pattern).test(viewValue);
+                }
+                return true;
             }
-            return true;
+
+            ctrl.$validators.email = function(modelValue, viewValue) {
+                if (scope.opts.type === 'email' && viewValue !== '') {
+                    var expr = /^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
+                    return expr.test(viewValue);
+                }
+                return true;
+            }
+
+            input.on("blur keydown", function(e) {
+                ctrl.$setTouched(true);
+            });
+
+        }else if(scope.opts.type === 'select'){
+            var select = $(elem).find("select");
+
+            if (scope.opts.required) {
+                select.attr('required', 'true');
+            }
+
+            select.on("click change", function(){
+                ctrl.$setTouched(true);
+            })
         }
-
-        input.on("blur keydown", function(e) {
-            ctrl.$setTouched(true);
-        });
-
     }
     return {
         restrict: 'AE',
         require: 'ngModel',
         scope: {
             model: '=ngModel',
+            source: '='
         },
         link: link,
         templateUrl: 'partials/formControl.html'

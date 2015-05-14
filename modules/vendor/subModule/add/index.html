@@ -1,24 +1,10 @@
 <ft-panel>
     <div class="col-md-6 col-sm-6 col-xs-12">
         <ft-form-text ng-model="model.companyName" name="companyName" labeltext="Company Name" required="true"></ft-form-text>
+        
+        <ft-form-text type="select" ng-model="model.typeOfGoods" source="dataList" name="typeOfGoods" labeltext="Type Of Goods" required="true"></ft-form-text>
 
-        <div class="form-group" ng-class="{ 'has-error' : form.typeOfGoods.$invalid && !form.typeOfGoods.$pristine }">
-            <label class="col-sm-3 control-label">Type Of Goods</label>
-            <div class="col-sm-9">
-                    <select class="form-control" name="typeOfGoods" ng-model="model.typeOfGoods" >
-                    <option value="">-- Type Of Goods --</option>
-                    <option value="Raj">Fuel</option>
-                    <option value="Vignesh">Battery</option>
-                    <option value="Raj">Electricals</option>
-                    <option value="Vignesh">Spare Parts</option>
-                    <option value="Raj">Tyre</option>
-                    <option value="Vignesh">Electricals</option>
-                </select>
-                <p ng-show="form.typeOfGoods.$invalid && !form.typeOfGoods.$pristine" class="help-block">Type Of Goods is required.</p>
-            </div>
-        </div>
-
-        <ft-form-text ng-model="model.contactPerson" name="contactPerson" labeltext="Contact Person" required="true"></ft-form-text>
+        <ft-form-text ng-model="model.contactPerson" name="contactPerson" labeltext="Contact Person" required="true"></ft-form-text>        
     </div>
     <div class="col-md-6 col-sm-6 col-xs-12">
         <ft-form-text ng-model="model.phone" name="phone" labeltext="Phone Number" maxlen="10" pattern="\d{10}"></ft-form-text>

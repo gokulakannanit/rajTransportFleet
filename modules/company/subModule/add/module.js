@@ -7,12 +7,17 @@ angular.module('mainModule')
 
     $scope.isEdit = $stateParams.isEdit;
 
-    $scope.ownerList = [];
+    $scope.ownerList =   [{label:'Battery', value:'Battery'}, 
+                            {label:'Electricals', value:'Electricals'}, 
+                            {label:'Spare Parts', value:'Spare Parts'}, 
+                            {label:'Tyre', value:'Tyre'}];
+
+    $scope.companyType = [{label:"Sole Propriteship", value:"S"}, {label:"Partnership", value:"P"}];
 
     ownerService.getOwnerList().then(function(data){
-        $scope.ownerList = data;        
+        $scope.ownerListData = data;        
     });
-   	
+
    	function init(){
    		 $scope.model = {
 				companyName:'',
@@ -34,6 +39,7 @@ angular.module('mainModule')
     	});    	
     }
     $scope.updateDetails = function(){
+
     	updateService.add($scope.model);
     }
 
@@ -41,7 +47,6 @@ angular.module('mainModule')
     	init();
     	$scope.companyForm.$setPristine()
     }
-
 
     init();
 
