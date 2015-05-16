@@ -15,7 +15,8 @@ angular.module('mainModule')
     $scope.companyType = [{label:"Sole Propriteship", value:"S"}, {label:"Partnership", value:"P"}];
 
     ownerService.getOwnerList().then(function(data){
-        $scope.ownerListData = data;        
+        $scope.ownerListData = data;
+        console.log($scope.ownerListData);
     });
 
    	function init(){

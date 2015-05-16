@@ -1,31 +1,28 @@
 <ft-panel>
         <div class="col-md-6 col-sm-6 col-xs-12">
-            <div class="form-group">
-                <label class="col-sm-3 control-label" for="textinput">Type Of Company</label>
-                <div class="col-sm-9">                        
-                    <div class="radio">
-                        <label><input type="radio" value="S" ng-model="model.typeOfCompany">Sole Propriteship</label>
-                        <label><input type="radio" value="P" ng-model="model.typeOfCompany">Partnership</label>
-                    </div>
-                </div>
-            </div>
+
+            <ft-form-text type="radio" source="companyType" ng-model="model.typeOfCompany" name="typeOfCompany" labeltext="Type Of Company" required="true"></ft-form-text>
 
             <ft-form-text ng-model="model.companyName" name="companyName" labeltext="Company Name" required="true"></ft-form-text> 
 
             <ft-form-text ng-model="model.address" name="address" labeltext="Address" required="true"></ft-form-text>
 
-            <div class="form-group" ng-class="{ 'has-error' : (form.owner.$invalid && !form.owner.$pristine) || (form.$error.owner) }">
-                <label class="col-sm-3 control-label"><span ng-if="model.typeOfCompany === 'P'">Add Partners</span><span ng-if="model.typeOfCompany === 'S'">Propriteship</span></label>
+            <div ng-if="model.typeOfCompany == 'S'">
+                <ft-form-text type="select" ng-model="model.owner" source="ownerList" name="owner" labeltext="Propriteship" required="true"></ft-form-text>
+            </div>
+
+            <div ng-if="model.typeOfCompany == 'P'">
+                <ft-tag-input name="owner" minlen="2" ng-model="model.owner" source="ownerListData" labeltext="Add Partners"></ft-tag-input>
+            </div>
+
+            <!-- <div class="form-group" ng-class="{ 'has-error' : (form.owner.$invalid && !form.owner.$pristine) || (form.$error.owner) }">
+                <label class="col-sm-3 control-label"><span ng-if="model.typeOfCompany === 'P'">Add Partners</span><span ng-if=""></span></label>
                 <div class="col-sm-9">
                     <ft-tag-input class="form-control" name="owner" min-value="2" ng-model="model.owner" auto-complete-source="ownerList" ng-if="model.typeOfCompany === 'P'"></ft-tag-input>
-                    <select class="form-control" name="owner" ng-if="model.typeOfCompany === 'S'" ng-model="model.owner" >
-                        <option value="">-- Select Owner --</option>
-                        <option ng-repeat="data in ownerList" value="{{data}}">{{data | titleCase}}</option>
-                    </select>
                     <p ng-show="form.owner.$invalid && !form.owner.$pristine" class="help-block">Owner Data is required.</p>
                     <p ng-show="form.$error.owner" class="help-block">Minimum two owner required.</p>
                 </div>
-            </div>
+            </div> -->
 
             <ft-form-text type="email" ng-model="model.email" name="email" labeltext="Email"></ft-form-text>                
         </div>

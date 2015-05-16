@@ -1,8 +1,7 @@
 <div class="form-group" ng-class="{ 'has-error' : form.$invalid && form.$touched}">
     <label class="col-sm-3 control-label" for="{{opts.name}}">{{opts.labeltext}}</label>
-    <div class="col-sm-9">      
-
-      <tags-input class="form-control" ng-model="tagit" on-tag-added="onTagAdded();" on-tag-removed="onTagAdded();" displayProperty="label"><auto-complete suggestionList="source"></auto-complete></tags-input>
+    <div class="col-sm-9">
+      <tags-input display-property="name" ng-model="selectedTags" add-from-autocomplete-only="true" on-tag-added="onTagAdded();" on-tag-removed="onTagAdded();"><auto-complete source="source"></auto-complete></tags-input>
 
       <div ng-if='form.$invalid && form.$touched' class="help-block" role="alert">
         <p ng-if="form.$error.required">This field is mandatory</p>

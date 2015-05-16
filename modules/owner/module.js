@@ -38,7 +38,7 @@ angular.module('mainModule')
 			this.get("all").then(function(data){
 				var arr = [];
 				angular.forEach(data, function(item) {
-		            this.push(item.name);
+		            this.push({"id":item.id,"name":item.name});
 		        }, arr);
 		        deferred.resolve(arr);
 			})

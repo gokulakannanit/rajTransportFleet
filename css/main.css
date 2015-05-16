@@ -2019,11 +2019,11 @@ ul.roman-list {
   border-color: #eaf5fb #eaf5fb #eaf5fb transparent;
   *border-left-color: white; }
 
-.form-control {
+.form-control, tags-input .form-control {
   -webkit-box-shadow: none;
   border: 2px solid #bfe0f3;
   height: 40px;
-  padding: 8px 16px; 
+  padding: 4px 8px; 
   border-radius: 4px;
   -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
   box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
@@ -2031,7 +2031,7 @@ ul.roman-list {
   -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
   transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
 }
-  .form-control:focus {
+  .form-control:focus, tags-input .form-control.focused {
     border: 2px solid skyblue;
     box-shadow: none;
     -webkit-box-shadow: none; }

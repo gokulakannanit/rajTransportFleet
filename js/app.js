@@ -199,17 +199,12 @@ myAppDev.directive("ftAlert", function($timeout, alertService) {
 myAppDev.directive("ftTagInput", function() {
 
     function link(scope, elem, attr, ctrl) {
-        scope.tagit = [];
         scope.opts = attr;
 
-        if (scope.selectedTags !== '') {
-            scope.tagit = scope.selectedTags.split(",");
-        }
-
         scope.onTagAdded = function() {
-            ctrl.$setTouched(true);
-            ctrl.$setValidity((scope.tagit.length >= scope.opts.minlen));
-            scope.selectedTags = scope.tagit.join(",");
+            //ctrl.$setTouched(true);
+            //ctrl.$setValidity((scope.selectedTags.length >= scope.opts.minlen));
+            console.log("---------",scope.selectedTags);
         }
 
     }
