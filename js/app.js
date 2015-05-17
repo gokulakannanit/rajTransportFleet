@@ -201,17 +201,22 @@ myAppDev.directive("ftTagInput", function() {
     function link(scope, elem, attr, ctrl) {
         scope.opts = attr;
 
+        scope.form = ctrl;
+
         scope.onTagAdded = function() {
-            //ctrl.$setTouched(true);
-            //ctrl.$setValidity((scope.selectedTags.length >= scope.opts.minlen));
-            console.log("---------",scope.selectedTags);
+            ctrl.$setValidity('minlen', (scope.selectedTags.length >= scope.opts.minlen));
+            ctrl.$setValidity('required', (scope.selectedTags.length >= 1));            
         }
+
+        angular.element(elem).find("input").on("blur keydown", function () {            
+            ctrl.$setTouched(true);
+            ctrl.$setValidity('required', (scope.selectedTags.length >= 1));
+        })
 
     }
     return {
         restrict: 'AE',
         require: 'ngModel',
-        replace: true,
         scope: {
             selectedTags: '=ngModel',
             source: '='
