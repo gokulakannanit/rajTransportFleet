@@ -1,10 +1,21 @@
 angular.module('mainModule')
-.controller('company.mainController', ['$rootScope', '$scope', 'modalService', 'company.updateService', function($rootScope, $scope, modalService, updateService){
+.controller('company.mainController', ['$rootScope', '$scope', 'modalService', 'company.updateService', 'owner.updateService', 
+	function($rootScope, $scope, modalService, updateService, ownerService){
 	function updateList(data){
 		$scope.companyList = data;
 	}	
+
 	function init(){
 		$scope.companyList = [];
+		$scope.ownerListData = [];
+		ownerService.getOwnerList().then(function(data){
+			var ownerlist = {};
+			angular.forEach(data, function(item) {
+		        ownerlist[item.id] = item.name;
+		    });
+	        $scope.ownerListData = ownerlist;
+	        console.log($scope.ownerListData);
+	    });
 		updateService.get('all').then(updateList);
 	}
 

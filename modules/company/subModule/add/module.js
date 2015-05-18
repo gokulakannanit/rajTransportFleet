@@ -12,12 +12,25 @@ angular.module('mainModule')
                             {label:'Spare Parts', value:'Spare Parts'}, 
                             {label:'Tyre', value:'Tyre'}];
 
+    $scope.selectedTags = [];
+
     $scope.companyType = [{label:"Sole Propriteship", value:"S"}, {label:"Partnership", value:"P"}];
 
     ownerService.getOwnerList().then(function(data){
         $scope.ownerListData = data;
-        console.log($scope.ownerListData);
+        updateOwnerData();
     });
+
+    function updateOwnerData(){
+        angular.forEach($scope.ownerListData, function(item) {
+            var owner = ($scope.model.owner).split(",");
+            angular.forEach(owner, function(item1) {
+                if(item.id === item1){
+                    $scope.selectedTags.push({id:item.id,name:item.name})
+                }
+            });
+        });
+    }
 
    	function init(){
    		 $scope.model = {
@@ -37,10 +50,16 @@ angular.module('mainModule')
     if($scope.isEdit === 'update'){
     	updateService.get($stateParams.editId).then(function(data){
     		$scope.model = data[0];
+            updateOwnerData();
     	});    	
     }
     $scope.updateDetails = function(){
+        var owner = [];
+        angular.forEach($scope.selectedTags, function(item) {
+          owner.push(item.id);
+        });
 
+        $scope.model.owner = owner.join(",");
     	updateService.add($scope.model);
     }
 

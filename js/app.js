@@ -226,6 +226,13 @@ myAppDev.directive("ftTagInput", function() {
     }
 });
 
+myAppDev.directive("ftForm", function() {
+    return {
+        restrict: 'E',
+        transclude:true,
+        templateUrl: 'partials/form.html'
+    }
+});
 myAppDev.controller("appController", function($rootScope) {
     // create an array of alerts available globally
     $rootScope.alerts = [];

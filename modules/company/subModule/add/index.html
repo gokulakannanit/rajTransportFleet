@@ -1,4 +1,5 @@
 <ft-panel>
+    <ft-form>
         <div class="col-md-6 col-sm-6 col-xs-12">
 
             <ft-form-text type="radio" source="companyType" ng-model="model.typeOfCompany" name="typeOfCompany" labeltext="Type Of Company" required="true"></ft-form-text>
@@ -12,17 +13,8 @@
             </div>
 
             <div ng-if="model.typeOfCompany == 'P'">
-                <ft-tag-input name="owner" minlen="2" ng-model="model.owner" source="ownerListData" labeltext="Add Partners"></ft-tag-input>
+                <ft-tag-input name="owner" minlen="2" ng-model="selectedTags" source="ownerListData" labeltext="Add Partners"></ft-tag-input>
             </div>
-
-            <!-- <div class="form-group" ng-class="{ 'has-error' : (form.owner.$invalid && !form.owner.$pristine) || (form.$error.owner) }">
-                <label class="col-sm-3 control-label"><span ng-if="model.typeOfCompany === 'P'">Add Partners</span><span ng-if=""></span></label>
-                <div class="col-sm-9">
-                    <ft-tag-input class="form-control" name="owner" min-value="2" ng-model="model.owner" auto-complete-source="ownerList" ng-if="model.typeOfCompany === 'P'"></ft-tag-input>
-                    <p ng-show="form.owner.$invalid && !form.owner.$pristine" class="help-block">Owner Data is required.</p>
-                    <p ng-show="form.$error.owner" class="help-block">Minimum two owner required.</p>
-                </div>
-            </div> -->
 
             <ft-form-text type="email" ng-model="model.email" name="email" labeltext="Email"></ft-form-text>                
         </div>
@@ -38,5 +30,6 @@
             
             <ft-form-text ng-model="model.phone" name="phone" labeltext="Phone Number" maxlen="10" pattern="\d{10}"></ft-form-text>
             
-        </div>        
+        </div> 
+    </ft-form>       
 </ft-panel>

@@ -1,17 +1,19 @@
 <ft-panel>
-    <div class="col-md-6 col-sm-6 col-xs-12">
-        <ft-form-text ng-model="model.companyName" name="companyName" labeltext="Company Name" required="true"></ft-form-text>
+	<ft-form>
+	    <div class="col-md-6 col-sm-6 col-xs-12">
+	        <ft-form-text ng-model="model.companyName" name="companyName" labeltext="Company Name" required="true"></ft-form-text>
 
-        <ft-form-text ng-model="model.address" name="address" labeltext="Address" required="true"></ft-form-text>
+	        <ft-form-text ng-model="model.address" name="address" labeltext="Address" required="true"></ft-form-text>
 
-        <ft-form-text ng-model="model.contactPerson" name="contactPerson" labeltext="Contact Person" required="true"></ft-form-text>
+	        <ft-form-text ng-model="model.contactPerson" name="contactPerson" labeltext="Contact Person" required="true"></ft-form-text>
 
-    </div>
-    <div class="col-md-6 col-sm-6 col-xs-12">
+	    </div>
+	    <div class="col-md-6 col-sm-6 col-xs-12">
 
-        <ft-form-text type="email" ng-model="model.email" name="email" labeltext="Email"></ft-form-text>
+	        <ft-form-text type="email" ng-model="model.email" name="email" labeltext="Email"></ft-form-text>
 
-        <ft-form-text ng-model="model.phone" name="phone" labeltext="Phone Number" maxlen="10" pattern="\d{10}"></ft-form-text> 
-   
-    </div>
+	        <ft-form-text ng-model="model.phone" name="phone" labeltext="Phone Number" maxlen="10" pattern="\d{10}"></ft-form-text> 
+	   
+	    </div>
+    </ft-form>
 </ft-panel>
